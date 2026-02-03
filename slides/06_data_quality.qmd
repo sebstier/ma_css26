@@ -1,0 +1,499 @@
+---
+title: "Data Quality and Open Science in CSS"
+author: "Sebastian Stier"
+lesson: 6
+institute: University of Mannheim & GESIS -- Leibniz Institute for the Social Sciences
+date: "2025-04-30"
+date-format: "YYYY-MM-DD"
+bibliography: references.bib
+footer: "[Computational Social Science and Digital Behavioral Data, University of Mannheim](https://sebstier.github.io/ma_css25/)"
+format: 
+  fakegesis-revealjs: 
+    code-line-numbers: false
+
+---
+
+
+## Agenda for today
+
+1. Seminar evaluation and update on seminar logistics
+
+2. Large Language Models, continued
+
+3. Data quality in CSS
+
+4. Applied text analysis in *R*
+
+5. Open science and reproducibility in CSS
+
+6. Writing a reproducible paper in *R*
+
+
+
+# 1. Seminar evaluation and update on seminar logistics {background-color="#58748F"}
+
+
+## Let's take 7 minutes for the seminar evaluation
+
+::: {style="font-size: 90%;"}
+
+  *Please actively encourage your students to participate in the survey starting from 28 April, and ideally allocate the     necessary time for completing the online questionnaire during your class (taking a maximum of 5 to 7 minutes).*
+
+:::
+
+
+## Requirements for the term paper
+
+- Should be based on content/methods covered in the seminar: collection and analysis of DBD, use of CSS methods in R
+- 3,500-5,000 words 
+- Submission deadline: 31 July 2025 (**Prüfungsleistung/Examination**)
+- Fully reproducible code, including narrative comments where you explain what you do in each step
+    - You can share all materials, including data with me via [https://cryptshare.gesis.org](https://cryptshare.gesis.org)
+
+## Format of the term paper
+- Motivation and research question
+- Concise theoretical overview: for what conceptual and theoretical reasons do I choose these data and methods?
+- Research design
+- Data and variables
+- Method: no detailed mathematical description needed, but why does this method fit my research question and my data?
+- Results
+- Interpretation and conclusions
+- Analysis code as an *R* script: needs to be fully reproducible
+
+
+## Criteria for grading seminar theses
+
+
+```{r, echo=FALSE, warning=FALSE, out.width="105%", message=FALSE}
+#| html-table-processing: none
+
+library(openxlsx)
+library(tidyverse)
+library(gt)
+library(gtExtras)
+read.xlsx("../material/data/thesis_grading.xlsx") %>%
+    rename("Very good" = "Very.good") %>%
+    gt() %>%
+    tab_header(md("**Grading scheme**")) %>%
+    fmt_markdown() %>%
+    cols_width(starts_with("X") ~ px(210), everything() ~ px(140)) %>% 
+    cols_label( X1 = " ", X6 = " ") %>% 
+    tab_options(data_row.padding = px(7)) %>%
+    tab_options(heading.title.font.size = 20,
+                column_labels.font.weight = "bold",
+                table.font.size = 18)
+
+```
+
+
+## Presentations in two weeks
+
+- A 10-15 minute elevator pitch of your ideas
+- A structure with three slides could look like this
+    1. Motivation, research question and theory
+    2. Data source and data acquisition
+    3. Current status / preliminary data collection / analysis
+
+
+## Generative AI guidelines at Uni Mannheim
+
+
+![](../material/img/chatgpt_im_studium)
+
+::: {style="font-size: 45%;"}
+
+[https://www.uni-mannheim.de/media/Einrichtungen/zll/Website_2.0/ChatGPT_Handreichung_Studierende_UMA_Stand_Mai_2023.pdf](https://www.uni-mannheim.de/media/Einrichtungen/Koordinationsstelle_Studieninformationen/Dokumente/Erstsemester/ChatGPT_Handreichung_Studierende_UMA_Stand_Mai_2023.pdf) (not available in English)
+
+:::
+
+
+
+
+##
+
+
+```{r, echo=FALSE, warning=FALSE, out.width="105%", message=FALSE}
+#| html-table-processing: none
+
+library(openxlsx)
+library(tidyverse)
+library(gt)
+library(gtExtras)
+read.xlsx("../material/data/schedule_v2.xlsx") %>%
+    rename(`Required reading` = "Required.reading") %>%
+    #head(6) %>% 
+    gt() %>%
+    tab_header(md("**Seminar dates and topics**")) %>%
+    #tab_header("**Seminar dates and topics**") %>%
+    #fmt_markdown() %>% #columns = TRUE
+    # cols_width(Date ~ px(400)#,
+    #            #Topics ~ px(350)#,
+    #            #`Required reading` ~ px(400)
+    #            ) %>%
+    cols_width(Date ~ pct(20),
+               Topics ~ pct(30),
+               `Required reading` ~ pct(50)
+               ) %>%
+    tab_options(data_row.padding = px(3)) %>%
+    tab_options(heading.title.font.size = 14,
+                column_labels.font.weight = "bold",
+                table.font.size = 13) %>%
+     gt_highlight_rows(
+     rows = 6,
+     fill = "lightblue"
+   ) %>% 
+  fmt_markdown() %>% 
+  cols_align(
+    align = "left",
+    columns = everything()
+  )
+
+
+```
+
+
+# 2. LLMs, continued {background-color="#58748F"}
+
+## How do LLMs work?
+
+![](../material/img/llms_text.png)
+
+
+::: {style="font-size: 40%;"}
+OpenAI, Achiam, J., Adler, S., Agarwal, S., Ahmad, L., Akkaya, I., Aleman, F. L., Almeida, D., Altenschmidt, J., Altman, S., Anadkat, S., Avila, R., Babuschkin, I., Balaji, S., Balcom, V., Baltescu, P., Bao, H., Bavarian, M., Belgum, J., … Zoph, B. (2024). [*GPT-4 Technical Report*.](https://arxiv.org/abs/2303.08774)
+
+Touvron, H., Lavril, T., Izacard, G., Martinet, X., Lachaux, M.-A., Lacroix, T., Rozière, B., Goyal, N., Hambro, E., Azhar, F., Rodriguez, A., Joulin, A., Grave, E., & Lample, G. (2023). [LLaMA: Open and Efficient Foundation Language Models.](https://arxiv.org/abs/2302.13971)
+
+
+:::
+
+## How do LLMs handle images?
+
+::: {style="font-size: 70%;"}
+
+- Scraping web images and their captions
+- Extracting image features and comparing the patterns of occurence across images
+- Using textual captions as image labels
+
+::: 
+
+
+![](../material/img/dalle2.png)
+
+
+::: {style="font-size: 40%;"}
+
+Ramesh, A., Dhariwal, P., Nichol, A., Chu, C., & Chen, M. (2022). Hierarchical Text-Conditional Image Generation with CLIP Latents. [*OpenAI*.](https://arxiv.org/abs/2204.06125)
+
+:::
+
+## **DALL·E 3**
+
+
+![](../material/img/dalle3.png)
+
+::: {style="font-size: 40%;"}
+
+Betker, J., Goh, G., Jing, L., Brooks, T., Wang, J., Li, L., Ouyang, L., Zhuang, J., Lee, J., Guo, Y., Manassra, W., Dhariwal, P., Chu, C., & Jiao, Y. (2023). Improving image generation with better captions. [*OpenAI*.](https://cdn.openai.com/papers/dall-e-3.pdf)
+
+:::
+
+
+# 3. Data quality in CSS {background-color="#58748F"}
+
+
+## Data quality
+
+- What are relevant dimensions of data quality?
+
+- How do you assess data quality in your research?
+
+- How do you ensure data quality in your research?
+
+
+## Data quality: relevant dimensions
+
+![](../material/img/data_qual_definition.png)
+
+::: {style="font-size: 35%;"}
+
+Birkenmaier, L., ... Ziaja, S. (2024). Defining and Evaluating Data Quality for the Social Sciences: Position Paper. [GESIS Papers.](https://doi.org/10.21241/SSOAR.96764)
+
+:::
+
+
+## What is a measurement?
+
+. . . 
+
+- A measurement is the process of linking an abstract concept to empirical indicators
+
+- A measurement is typically an inference since we almost never observe "all data" perfectly. We use measurements to draw inferences based on incomplete/sampled data
+
+## Drawing inferences: social sciences
+
+![](../material/img/inferences_socsci){fig-align="center"}
+
+
+## Drawing inferences: CSS
+
+![](../material/img/inferences_css){fig-align="center"}
+
+
+
+## Theory and causal mechanisms
+
+
+![](../material/img/inferences_merkel){fig-align="center"}
+
+
+## Applications to election prediction
+
+
+![](../material/img/tumasjan){width=70%}
+
+
+::: {style="font-size: 30%;"}
+
+Tumasjan, A., Sprenger, T. O., Sandner, P. G., & Welpe, I. M. (2010). Predicting elections with Twitter: What 140 characters reveal about political sentiment. In: [*Proceedings of the 4th International AAAI Conference on Weblogs and Social Media* (pp. 178–185).](https://doi.org/10.1609/icwsm.v4i1.14009) 
+
+:::
+
+![](../material/img/tumasjan_reply){width=70%}
+
+
+::: {style="font-size: 30%;"}
+
+Jungherr, A., Jürgens, P., & Schoen, H. (2012). Why the Pirate Party Won the German Election of 2009 or The Trouble With Predictions. [*Social Science Computer Review*, 30(2), 229–234.](https://doi.org/10.1177/0894439311404119)
+
+:::
+
+
+
+## The micro-macro link
+
+![](../material/img/jungherr_causal){fig-align="center"}
+
+::: {style="font-size: 50%;"}
+
+Jungherr, A., Schoen, H., & Jürgens, P. (2016). The Mediation of Politics through Twitter: An Analysis of Messages posted during the Campaign for the German Federal Election 2013. [*Journal of Computer-Mediated Communication*, 21(1), 50–68.](https://doi.org/10.1111/jcc4.12143)
+
+See also: Coleman, J. S. (1990). *Foundations of social theory*. Belknap Press of Harvard University Press.
+
+:::
+
+
+## An error framework perspective
+
+![](../material/img/tse_groves){fig-align="center"}
+
+::: {style="font-size: 50%;"}
+
+Groves, R. M., & Lyberg, L. (2010). Total Survey Error: Past, Present, and Future. [*Public Opinion Quarterly*, 74(5), 849–879.](https://doi.org/10.1093/poq/nfq065)
+
+::: 
+
+## An error framework for DBD
+
+
+![](../material/img/tse_dbd){fig-align="center"}
+
+::: {style="font-size: 50%;"}
+
+Sen, I., Flöck, F., Weller, K., Weiß, B., & Wagner, C. (2021). A Total Error Framework for Digital Traces of Human Behavior on Online Platforms. [*Public Opinion Quarterly*, 85(S1), 399–422.](https://doi.org/10.1093/poq/nfab018)
+
+::: 
+
+## Error framework for DBD
+
+- Can improve communication between different social sciences and CSS communities
+- May help you to systematically reflect on the validity and reliability of your measurement
+- But this framework is just a starting point! There are always research design and platform specific things to consider
+
+
+
+# 4. Applied text analysis in *R* {background-color="#58748F"}
+
+
+## Validation of text analysis
+
+
+![](../material/img/grundl.png)
+
+
+::: {style="font-size: 50%;"}
+Gründl, J. (2022). Populist ideas on social media: A dictionary-based measurement of populist communication. [*New Media & Society*, 24(6), 1481–1499.](https://doi.org/10.1177/1461444820976970)
+
+:::
+
+
+## Validation
+
+![](../material/img/prec_recall)
+
+
+::: {style="font-size: 40%;"}
+
+[https://medium.com/weidagang/demystifying-precision-and-recall-in-machine-learning-6f756a4c54ac](https://medium.com/@weidagang/demystifying-precision-and-recall-in-machine-learning-6f756a4c54ac)
+:::
+
+
+## Model validation in *R*
+
+Go to file **6_class_six.R** in [https://sebastianstier.com/ma_css25/material.html](https://sebastianstier.com/ma_css24-25/material.html)
+
+
+
+## Automated text analysis: The menu of options
+
+
+![](../material/img/grimmer_stewart_checkboxes_v2.png){fig-align="center"}
+
+::: {style="font-size: 30%;"}
+Grimmer, J., & Stewart, B. M. (2013). Text as Data: The Promise and Pitfalls of Automatic Content Analysis Methods for Political Texts. [*Political Analysis*, 21(3), 267--297.](https://doi.org/10.1093/pan/mps028)
+
+:::
+
+
+
+# 5. Open science and reproducibility in CSS {background-color="#58748F"}
+
+
+## What is reproducibility?
+
+**Defining reproducibility**
+    
+A minimum standard on a spectrum of activities ("reproducibility spectrum") for assessing the value or accuracy of scientific claims **based on the original methods, data, and code**. [...] In some fields, this meaning is, instead, associated with the term "replicability" or "repeatability".
+
+::: {style="font-size: 50%;"}
+[https://forrt.org/glossary/reproducibility](https://forrt.org/glossary/reproducibility)
+
+:::
+
+. . . 
+
+Reproducibility ensures that research is **transparent, verifiable, and trustworthy**.
+
+
+
+## Motivations for reproducibility
+    
+- Increasing the robustness and trustworthiness of your own research
+
+- Facilitating collaboration (through the use of common tools and standards)
+
+- Being kind to *future you*:
+    - Editing and reusing your own code (e.g., for a paper revision or a follow-up study)
+    - Easily being able to pick up a project after a break or finding and understanding things again after a longer time
+    
+
+## *The Turing Way* definition
+    
+ ![](../material/img/turing_way.jpg)
+
+    
+
+::: {style="font-size: 50%;"}
+
+[https://the-turing-way.netlify.app/reproducible-research/overview/overview-definitions.html](https://the-turing-way.netlify.app/reproducible-research/overview/overview-definitions.html)
+
+:::
+    
+## Computational reproducibility
+
+
+There also are distinctions between different types (or components) of reproducibility. One type/component that is especially relevant for our course is "computational reproducibility":
+
+. . . 
+
+::: {style="font-size: 82%;"}
+
+> Ability to **recreate the same results as the original study** (including tables, figures, and quantitative findings), using the **same input data, computational methods, and conditions of analysis**. The availability of code and data facilitates computational reproducibility, as does preparation of these materials (annotating data, delineating software versions used, sharing computational environments, etc). Ideally, computational reproducibility should be achievable by another second researcher (or the original researcher, at a future time), using only a set of files and written instructions. 
+
+::: 
+
+::: {style="font-size: 30%;"}
+[https://forrt.org/glossary/reproducibility](https://forrt.org/glossary/reproducibility)
+
+:::
+
+
+
+## The state of affairs
+
+![](../material/img/hong_open_science){width=50%}
+
+::: {style="font-size: 50%;"}
+Chan, C., Schatto-Eckrodt, T., & Gruber, J. B. (2024). What makes computational communication science (ir)reproducible? *Computational Communication Research*.
+
+:::
+
+::: {style="font-size: 70%;"}
+
+*Take 5 minutes with your neighbor(s) to quickly recap the key findings of @chan_what_2024.*
+
+:::
+
+
+    
+## Tools & workflows
+    
+**Tools** are programming languages, scripts and other pieces of software that we use to make our research reproducible.
+
+**Workflows** are the ways in which we combine these tools to achieve our goal.
+
+. . . 
+
+Choosing tools and establishing workflows are somewhat idiosyncratic processes that depend on...
+
+- the requirements of your project (methods, data types, ...)
+
+- the availability of tools
+
+- your skills and knowledge
+
+- the preferences of collaborators
+
+    
+## Research management practices
+    
+Being an open scientist means **adopting a few straightforward research management practices, which lead to less error-prone, reproducible research workflows** [@klein_practical_2018: 11]
+
+- Using free and open source software (FOSS)
+- [Project-oriented workflow](https://www.tidyverse.org/blog/2017/12/workflow-vs-script)
+- [The *tidyverse* style guide](https://style.tidyverse.org)
+- [Clear folder structures](https://psych-transparency-guide.uni-koeln.de/folder-structure.html)
+- [Naming things](https://style.tidyverse.org/syntax.html)
+
+
+## Reproducibility: best practices in your term papers
+
+- If a login is required (e.g., YouTube API), please provide the data you downloaded to me (big files via [https://cryptshare.gesis.org](https://cryptshare.gesis.org))
+- If you have chunks of code that need a long time to run (especially downloads from APIs), please provide intermediate files with the results, e.g.: `read_rds("output/youtube_data.rds")`
+- Make sure that the folder structure you use (e.g., `data` or `plots`) is maintained in the files you send me $\rightarrow$ zip before sending
+
+
+# 6. Writing a reproducible paper in *R* {background-color="#58748F"}
+
+## Exploring *quarto*
+
+- Together with your neighbor(s), explore the quarto logic and try to render your first quarto document as pdf and then as docx.
+
+- The documentation of quarto can be found here: [https://quarto.org/docs/output-formats/pdf-basics.html](https://quarto.org/docs/output-formats/pdf-basics.html)
+    
+    
+    
+## Fully reproducible documents in *R*
+
+![](../material/img/bauer_quarto)
+
+
+::: {style="font-size: 57%;"}
+Download the template (zip file) from GitHub: [https://github.com/paulcbauer/Writing_a_reproducable_paper_with_quarto](https://github.com/paulcbauer/Writing_a_reproducable_paper_with_quarto)
+:::
+
+
+
+# See you on May 14 2025 {background-color="#58748F"} 
+
+## References

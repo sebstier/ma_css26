@@ -1,0 +1,315 @@
+---
+title: "Designed Digital Data"
+author: "Sebastian Stier"
+lesson: 3
+institute: University of Mannheim & GESIS -- Leibniz Institute for the Social Sciences
+date: "2025-03-12"
+date-format: "YYYY-MM-DD"
+bibliography: references.bib
+footer: "[Computational Social Science and Digital Behavioral Data, University of Mannheim](https://sebstier.github.io/ma_css25/)"
+format: 
+  fakegesis-revealjs: 
+    code-line-numbers: false
+
+---
+
+
+##
+
+
+```{r, echo=FALSE, warning=FALSE, out.width="105%", message=FALSE}
+#| html-table-processing: none
+
+library(openxlsx)
+library(tidyverse)
+library(gt)
+library(gtExtras)
+read.xlsx("../material/data/schedule_v2.xlsx") %>%
+    rename(`Required reading` = "Required.reading") %>%
+    #head(6) %>% 
+    gt() %>%
+    tab_header(md("**Seminar dates and topics**")) %>%
+    #tab_header("**Seminar dates and topics**") %>%
+    #fmt_markdown() %>% #columns = TRUE
+    # cols_width(Date ~ px(400)#,
+    #            #Topics ~ px(350)#,
+    #            #`Required reading` ~ px(400)
+    #            ) %>%
+    cols_width(Date ~ pct(20),
+               Topics ~ pct(30),
+               `Required reading` ~ pct(50)
+               ) %>%
+    tab_options(data_row.padding = px(3)) %>%
+    tab_options(heading.title.font.size = 14,
+                column_labels.font.weight = "bold",
+                table.font.size = 13) %>%
+     gt_highlight_rows(
+     rows = 3,
+     fill = "lightblue"
+   ) %>% 
+  fmt_markdown() %>% 
+  cols_align(
+    align = "left",
+    columns = everything()
+  )
+
+
+```
+
+
+## Agenda for today
+
+1. Data visualization and working with text data in *R*
+
+2. Designed digital data 
+
+3. Data wrangling and joining operations in *R*
+
+
+
+
+# 1. Data visualization and working with text data in *R* {background-color="#58748F"} 
+
+## Introduction to *ggplot2*
+
+:::: {.columns}
+
+::: {.column width="57%"}
+
+![](../material/img/grammar_graphics){width=120%}
+
+::: {style="font-size: 28%;"}
+
+[https://stulp.gmw.rug.nl/dataviz/ggplottheory.html](https://stulp.gmw.rug.nl/dataviz/ggplottheory.html)
+
+:::
+
+:::
+
+::: {.column width="43%"}
+
+- *ggplot2* follows the "grammar of graphics"
+- [Cheatsheet](https://github.com/rstudio/cheatsheets/blob/main/data-visualization.pdf) with the most relevant functions
+- [Extensions](https://exts.ggplot2.tidyverse.org/gallery/) to *ggplot2* that others built
+
+:::
+
+::::
+
+
+## A ggplot figure
+
+::: {.small-code}
+
+```{r}
+#| echo: fenced
+#| output-location: column
+#| code-line-numbers: "6|7|8|9|10"
+
+library(ggplot2)
+mtcars %>%
+  ggplot(aes(x = disp, y = mpg)) +
+  geom_point() +
+  geom_smooth(method = "loess", formula = "y ~ x") +
+  theme_minimal()
+
+```
+
+:::
+
+## Let's get started
+- Download file **2_class_two.R** in [https://sebastianstier.com/ma_css25/material.html](https://sebastianstier.com/ma_css25/material.html)
+
+
+# 2. Designed digital data {background-color="#58748F"}
+
+
+## Linking digital behavioral data and surveys
+
+![](../material/img/ideal_dataset){width=150%}
+
+::: {style="font-size: 50%;"}
+Resnick, P., Adar, E., & Lampe, C. (2015). What Social Media Data We Are Missing and How to Get It. [*The ANNALS of the American Academy of Political and Social Science*, 659(1), 192–206.](https://doi.org/10.1177/0002716215570006)
+
+:::
+
+
+## How to actually link DBD and surveys?
+
+![](../material/img/linking_sequences){fig-align="center"}
+
+::: {style="font-size: 40%;"}
+Stier, S., Breuer, J., Siegers, P., & Thorson, K. (2020). Integrating Survey Data and Digital Trace Data: Key Issues in Developing an Emerging Field. [*Social Science Computer Review*, 38(5), 503–516.](https://doi.org/10.1177/0894439319843669)
+
+:::
+
+. . . 
+
+::: {style="font-size: 70%;"}
+$\rightarrow$ The exact setup depends very much on the type of DBD and platform data that may be linked with surveys.
+
+:::
+
+
+## Example: political polarization
+
+![](../material/img/polarization_twitter){fig-align="center"}
+
+::: {style="font-size: 50%;"}
+Conover, M., Ratkiewicz, J., Francisco, M., Goncalves, B., Menczer, F., & Flammini, A. (2011). [Political Polarization on Twitter. In *Proceedings of the 5th International AAAI Conference on Web and Social Media* (pp. 89–96). AAAI Publications.](https://doi.org/10.1609/icwsm.v5i1.14126)
+
+:::
+
+## Political polarization on Twitter, better conceptualized
+
+![](../material/img/barbera_polariz){fig-align="center"}
+
+::: {style="font-size: 37%;"}
+Barberá, P., Jost, J. T., Nagler, J., Tucker, J. A., & Bonneau, R. (2015). [Tweeting From Left to Right: Is Online Political Communication More Than an Echo Chamber? *Psychological Science*, 26(10), 1531–1542.](https://doi.org/10.1177/0956797615594620)
+
+:::
+
+
+## Political polarization, using web browsing data
+
+:::: {.columns}
+
+::: {.column width="55%"}
+
+
+![](../material/img/polarization_nelson.png){width=100%}
+
+::: {style="font-size: 45%;"}
+Nelson, J. L., & Webster, J. G. (2017). [The Myth of Partisan Selective Exposure: A Portrait of the Online Political News Audience. *Social Media + Society*, 3(3).](https://doi.org/10.1177/2056305117729314) 
+:::
+
+
+
+:::
+
+
+::: {.column width="40%"}
+
+![](../material/img/polarization_guess.png){width=110%}
+
+::: {style="font-size: 40%;"}
+Guess, A. M. (2021). [(Almost) Everything in Moderation: New Evidence on Americans’ Online Media Diets. *American Journal of Political Science*, 65(4), 1007–1022.](https://doi.org/10.1111/ajps.12589)
+
+:::
+
+:::
+
+::::
+
+
+ 
+## Our two required readings
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+
+![](../material/img/tromble){width=100%}
+
+::: {style="font-size: 40%;"}
+Tromble, R. (2021). [Where Have All the Data Gone? A Critical Reflection on Academic Digital Research in the Post-API Age. *Social Media + Society*, 7(1).](https://doi.org/10.1177/2056305121988929)
+
+:::
+
+:::
+
+
+::: {.column width="50%"}
+
+![](../material/img/silber){width=65%}
+
+::: {style="font-size: 40%;"}
+
+Silber, H., Breuer, J., Beuthner, C., Gummer, T., Keusch, F., Siegers, P., Stier, S., & Weiß, B. (2022). [Linking Surveys and Digital Trace Data: Insights From two Studies on Determinants of Data Sharing Behaviour. *Journal of the Royal Statistical Society Series A: Statistics in Society*, 185(Supplement_2), S387–S407.](https://doi.org/10.1111/rssa.12954)
+
+
+:::
+
+:::
+
+
+::::
+
+
+
+## Guiding questions:
+
+::: {style="font-size: 100%;"}
+    - Describe what problem or question these papers address and the main contributions that they make towards a solution or answer. 
+    
+    - Reflect on the main strengths and weaknesses of these papers.
+    
+    - What are the concepts, assumed social mechanisms and operationalizations used in the papers?
+    
+    - What are the data in use? How are the data analyzed? Does this seem appropriate?
+    
+    - How convincing do you find the arguments presented by the authors? Are the conclusions backed up by the empirical results?
+    
+    - Do you see any ethical concerns?
+    
+    - If applicable, are there commonalities or differences between the two papers?
+    
+:::
+
+
+## Think-pair-share
+
+1. Discuss the literature for today with your neighbor (5 min.)
+2. Focus on the presented solutions for data collection, their pros and cons, feasibility, etc.
+3. Share and discuss your results with the full class
+
+
+
+# 3. Data wrangling and joining operations in *R* {background-color="#58748F"} 
+
+## The data we will use today
+
+![](../material/img/clemm_paper){width=70%}
+
+::: {style="font-size: 40%;"}
+Wojcieszak, M., Clemm Von Hohenberg, B., Casas, A., Menchen-Trevino, E., De Leeuw, S., Gonçalves, A., & Boon, M. (2022). Null effects of news exposure: A test of the (un)desirable effects of a 'news vacation' and 'news binging'. [*Humanities and Social Sciences Communications*, 9(1), 413.](https://doi.org/10.1057/s41599-022-01423-x)
+
+
+:::
+
+<br>
+
+
+::: {style="font-size: 50%;"}
+
+*A toy browsing data set from our OSF repository. It is based on a real data set collected from a US sample in 2019, but reduced to fewer participants and slightly modified for reasons of anonymity (n_subjects = 100; n_visits = 2 million).*
+
+:::
+
+## Let's get started
+- Download file **3_class_three.R** in [https://sebastianstier.com/ma_css25/material.html](https://sebastianstier.com/ma_css25/material.html)
+
+
+
+## Homework
+
+
+[Browse through Bauer et al. and explore the options for collecting DBD. If you find the time, try a few of the proposed APIs and code snippets.]{style="color:red;"}
+
+::: {style="font-size: 50%;"}
+[https://bookdown.org/paul/apis_for_social_scientists/](https://bookdown.org/paul/apis_for_social_scientists/)
+:::
+
+<br>
+
+- Which APIs did you try out?
+- Which APIs/code still work?
+- Did the data help shape your research ideas?
+
+
+
+# See you on March 26th 2025 {background-color="#58748F"} 
+
+## References

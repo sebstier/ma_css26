@@ -1,0 +1,17 @@
+{
+  "hash": "3e3091cd34d2edd7dabf1070b358bcc1",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Quarto playground\"\nformat:\n  pdf:\n    toc: true\n    number-sections: true\n    link-citations: true\n    colorlinks: true\n    urlcolor: blue\n    citecolor: blue\nbibliography: quarto_references.bib\n---\n\n\n\n# Introduction\n\nThis is a quarto test document. This paper is important for my thesis [@stier2017]. More references [@aapor2016]. Let's insert a URL \\[<https://quarto.org/docs/reference/formats/pdf.html>\\](<https://quarto.org/docs/reference/formats/pdf.html>)\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidyverse)\nlibrary(gapminder)\n\ngapminder %>% \n  ggplot(aes(x = gdpPercap, y = lifeExp)) +\n  geom_point() +\n  geom_smooth() +\n  ggplot2::scale_x_log10()\n```\n\n::: {.cell-output-display}\n![](quarto-playground_files/figure-pdf/unnamed-chunk-1-1.pdf){fig-pos='H'}\n:::\n:::\n\n\n\n# References\n",
+    "supporting": [
+      "quarto-playground_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": null,
+    "postProcess": false
+  }
+}

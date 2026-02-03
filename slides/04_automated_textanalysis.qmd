@@ -1,0 +1,209 @@
+---
+title: "Automated Text Analysis"
+author: "Sebastian Stier"
+lesson: 4
+institute: University of Mannheim & GESIS -- Leibniz Institute for the Social Sciences
+date: "2025-03-26"
+date-format: "YYYY-MM-DD"
+bibliography: references.bib
+footer: "[Computational Social Science and Digital Behavioral Data, University of Mannheim](https://sebstier.github.io/ma_css25/)"
+format: 
+  fakegesis-revealjs: 
+    code-line-numbers: false
+
+---
+
+
+## Agenda for today
+
+1. Data wrangling and joining operations in *R*
+
+2. Automated text analysis
+
+3. Applied text analysis in *R*
+
+##
+
+
+```{r, echo=FALSE, warning=FALSE, out.width="105%", message=FALSE}
+#| html-table-processing: none
+
+library(openxlsx)
+library(tidyverse)
+library(gt)
+library(gtExtras)
+read.xlsx("../material/data/schedule_v2.xlsx") %>%
+    rename(`Required reading` = "Required.reading") %>%
+    #head(6) %>% 
+    gt() %>%
+    tab_header(md("**Seminar dates and topics**")) %>%
+    #tab_header("**Seminar dates and topics**") %>%
+    #fmt_markdown() %>% #columns = TRUE
+    # cols_width(Date ~ px(400)#,
+    #            #Topics ~ px(350)#,
+    #            #`Required reading` ~ px(400)
+    #            ) %>%
+    cols_width(Date ~ pct(20),
+               Topics ~ pct(30),
+               `Required reading` ~ pct(50)
+               ) %>%
+    tab_options(data_row.padding = px(3)) %>%
+    tab_options(heading.title.font.size = 14,
+                column_labels.font.weight = "bold",
+                table.font.size = 13) %>%
+     gt_highlight_rows(
+     rows = 4,
+     fill = "lightblue"
+   ) %>% 
+  fmt_markdown() %>% 
+  cols_align(
+    align = "left",
+    columns = everything()
+  )
+
+
+```
+
+# 1. Data wrangling and joining operations in *R* {background-color="#58748F"} 
+
+## The data we will use today
+
+![](../material/img/clemm_paper){width=30%}
+
+::: {style="font-size: 40%;"}
+Wojcieszak, M., Clemm Von Hohenberg, B., Casas, A., Menchen-Trevino, E., De Leeuw, S., Gonçalves, A., & Boon, M. (2022). Null effects of news exposure: A test of the (un)desirable effects of a 'news vacation' and 'news binging'. [*Humanities and Social Sciences Communications*, 9(1), 413.](https://doi.org/10.1057/s41599-022-01423-x)
+
+
+:::
+
+<br>
+
+
+::: {style="font-size: 70%;"}
+
+We are still in file **3_class_three.R** in [https://sebastianstier.com/ma_css25/material.html](https://sebastianstier.com/ma_css25/material.html)
+
+:::
+
+
+# 2. Automated text analysis {background-color="#58748F"} 
+
+## Automated text analysis: The menu of options
+
+![](../material/img/grimmer_stewart){fig-align="center"}
+
+::: {style="font-size: 30%;"}
+Grimmer, J., & Stewart, B. M. (2013). Text as Data: The Promise and Pitfalls of Automatic Content Analysis Methods for Political Texts. [*Political Analysis*, 21(3), 267--297.](https://doi.org/10.1093/pan/mps028)
+
+:::
+
+
+
+## Think-pair-share
+
+1. Discuss the literature for today with your neighbor (5 min.)
+2. Focus on the used methods, their pros and cons, feasibility, etc. 
+3. Locate our two required readings on the map of @grimmer_text_2013
+4. Share and discuss your results with the full class
+
+
+
+## The state of sociology
+
+
+:::: {.columns}
+
+::: {.column width="55%"}
+
+
+![](../material/img/schwemmer_scale){width=100%}
+
+::: {style="font-size: 40%;"}
+Schwemmer, C., & Wieczorek, O. (2020). The Methodological Divide of Sociology: Evidence from Two Decades of Journal Publications. [*Sociology*, 54(1), 3–21.](https://doi.org/10.1177/0038038519853146)
+:::
+
+:::
+
+
+::: {.column width="45%"}
+
+![](../material/img/schwemmer_reg_all){width=100%}
+
+:::
+
+
+::::
+
+
+## Important terms
+
+- *Document*: the main unit of analysis containing the text
+    - There might be document-level variables like an author, time, source, etc.
+- *Corpus*: a collection of several documents
+- *Token*: converting a sequence of text into smaller parts, e.g., words
+- *Document-Feature Matrix (DFM)*: a matrix of documents and features (tokens)
+- *Stopwords*: commonly used words in a language (e.g., `the`, `a`, `are`) that do not carry much useful information when you want to classify text
+
+
+## Automated text analysis in *R*
+
+![](../material/img/quanteda){fig-align="center"}
+
+::: {style="font-size: 30%;"}
+Benoit, K., Watanabe, K., Wang, H., Nulty, P., Obeng, A., Müller, S., Matsuo, A., Perry, P. O., Kuha, J., & Lauderdale, B. (2018). quanteda: An R package for the quantitative analysis of textual data. [*Journal of Open Source Software*, 3(30), 774.](https://joss.theoj.org/papers/10.21105/joss.00774)
+
+:::
+
+
+## From text to numbers: word-to-word matrix
+
+![](../material/img/word_word_matrix){fig-align="center"}
+
+
+## From text to numbers: a document-feature matrix
+
+
+![](../material/img/dfm_term_matrix){fig-align="center"}
+
+**Bag-of-words representation of text**
+
+![](../material/img/dfm_docs){fig-align="center"}
+
+
+
+## Distributional semantics
+
+- A word's meaning is given by the words that frequently appear close by
+
+  $\rightarrow$ One of the most successful ideas in Natural Language Processing
+  
+- Context
+
+  $\rightarrow$ When a word appears in a text, its context is a set of words that appear nearby (within a fixed window): `car`, `street`, `traffic`
+  
+ 
+# 3. Applied text analysis in *R* {background-color="#58748F"} 
+
+
+## We will use *quanteda* 
+- Go to file **4_session_four.R** in [https://sebastianstier.com/ma_css25/material.html](https://sebastianstier.com/ma_css25/material.html)
+
+
+
+## Homework
+
+
+[Browse through Bauer et al. and explore the options for collecting DBD. Try a few of the proposed APIs and code snippets.]{style="color:red;"}
+
+![](../material/img/apis_bauer){width=115%}
+
+::: {style="font-size: 50%;"}
+[https://paulcbauer.github.io/apis_for_social_scientists_a_review/](https://paulcbauer.github.io/apis_for_social_scientists_a_review/)
+:::
+
+<br>
+
+
+# See you on 9th of April 2025 {background-color="#58748F"} 
+
+## References

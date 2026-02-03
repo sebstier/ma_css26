@@ -1,0 +1,124 @@
+---
+title: "Seminar Presentations and Reproducible Documents"
+author: "Sebastian Stier"
+lesson: 7
+institute: University of Mannheim & GESIS -- Leibniz Institute for the Social Sciences
+date: "2025-05-14"
+date-format: "YYYY-MM-DD"
+bibliography: references.bib
+footer: "[Computational Social Science and Digital Behavioral Data, University of Mannheim](https://sebstier.github.io/ma_css25/)"
+format: 
+  fakegesis-revealjs: 
+    code-line-numbers: false
+
+---
+
+## Agenda for today
+
+
+1. Presentation of term paper ideas
+
+2. Writing a reproducible paper in *R*
+
+3. Open questions and issues
+
+
+
+##
+
+
+```{r, echo=FALSE, warning=FALSE, out.width="105%", message=FALSE}
+#| html-table-processing: none
+
+library(openxlsx)
+library(tidyverse)
+library(gt)
+library(gtExtras)
+read.xlsx("../material/data/schedule_v2.xlsx") %>%
+    rename(`Required reading` = "Required.reading") %>%
+    #head(6) %>% 
+    gt() %>%
+    tab_header(md("**Seminar dates and topics**")) %>%
+    #tab_header("**Seminar dates and topics**") %>%
+    #fmt_markdown() %>% #columns = TRUE
+    # cols_width(Date ~ px(400)#,
+    #            #Topics ~ px(350)#,
+    #            #`Required reading` ~ px(400)
+    #            ) %>%
+    cols_width(Date ~ pct(20),
+               Topics ~ pct(30),
+               `Required reading` ~ pct(50)
+               ) %>%
+    tab_options(data_row.padding = px(3)) %>%
+    tab_options(heading.title.font.size = 14,
+                column_labels.font.weight = "bold",
+                table.font.size = 13) %>%
+     gt_highlight_rows(
+     rows = 7,
+     fill = "lightblue"
+   ) %>% 
+  fmt_markdown() %>% 
+  cols_align(
+    align = "left",
+    columns = everything()
+  )
+
+
+```
+
+
+# 1. Presentation of term paper ideas {background-color="#58748F"}
+
+
+# 2. Writing a reproducible paper in *R* {background-color="#58748F"}
+
+
+## Homework: exploring *quarto*
+
+- Explore the quarto logic and try to render your first quarto document as pdf and then as docx.
+
+- The documentation of quarto can be found here: [https://quarto.org/docs/output-formats/pdf-basics.html](https://quarto.org/docs/output-formats/pdf-basics.html)
+    
+    
+    
+## Fully reproducible documents in *R*
+
+![](../material/img/bauer_quarto)
+
+
+::: {style="font-size: 57%;"}
+Download the template (zip file) from GitHub: [https://github.com/paulcbauer/Writing_a_reproducable_paper_with_quarto](https://github.com/paulcbauer/Writing_a_reproducable_paper_with_quarto)
+:::
+
+
+
+# 3. Open questions and issues {background-color="#58748F"}
+
+
+## Collecting digital behavioral data via APIs
+
+![](../material/img/apis_bauer){width=115%}
+
+::: {style="font-size: 50%;"}
+[https://bookdown.org/paul/apis_for_social_scientists/](https://bookdown.org/paul/apis_for_social_scientists/)
+:::
+
+
+## Reproducibility: best practices in your term papers
+
+::: {style="font-size: 90%;"}
+
+- If a login is required (e.g., YouTube API), please provide the data you downloaded to me (big files via [https://cryptshare.gesis.org](https://cryptshare.gesis.org))
+- If you have chunks of code that need a long time to run (especially downloads from APIs), please provide intermediate files with the results, e.g.: `read_rds("output/youtube_data.rds")`
+- Make sure that the folder structure you use (e.g., `data` or `plots`) is maintained in the files you send me $\rightarrow$ zip before sending
+- Even better, create an R project file.
+:::
+
+## Some additional resources
+
+- R for Data Science (2nd edition) [@wickham_r_2023]: [https://r4ds.hadley.nz](https://r4ds.hadley.nz)
+- Web Scraping Reference: Cheat Sheet for Web Scraping using R [https://github.com/yusuzech/r-web-scraping-cheat-sheet](https://github.com/yusuzech/r-web-scraping-cheat-sheet)
+- Automated Content Analysis with R: [https://content-analysis-with-r.com](https://content-analysis-with-r.com)
+
+
+## References

@@ -1,0 +1,276 @@
+---
+title: "Automated Text Analysis and Large Language Models"
+author: "Sebastian Stier"
+lesson: 5
+institute: University of Mannheim & GESIS -- Leibniz Institute for the Social Sciences
+date: "2025-04-09"
+date-format: "YYYY-MM-DD"
+bibliography: references.bib
+footer: "[Computational Social Science and Digital Behavioral Data, University of Mannheim](https://sebstier.github.io/ma_css25/)"
+format: 
+  fakegesis-revealjs: 
+    code-line-numbers: false
+
+---
+
+
+
+## Agenda for today
+
+1. Automated text analysis: topic models
+
+2. Applied text analysis in *R*
+
+3. Large Language Models
+
+4. Applied text analysis in *R*
+
+
+## Homework
+
+
+![](../material/img/apis_bauer){width=115%}
+
+
+::: {style="font-size: 50%;"}
+[https://bookdown.org/paul/apis_for_social_scientists/](https://bookdown.org/paul/apis_for_social_scientists/)
+:::
+
+<br>
+
+- Which APIs did you try out?
+- Which APIs/code still work?
+- Did the data help shape your research ideas?
+
+
+
+##
+
+
+```{r, echo=FALSE, warning=FALSE, out.width="105%", message=FALSE}
+#| html-table-processing: none
+
+library(openxlsx)
+library(tidyverse)
+library(gt)
+library(gtExtras)
+read.xlsx("../material/data/schedule_v2.xlsx") %>%
+    rename(`Required reading` = "Required.reading") %>%
+    #head(6) %>% 
+    gt() %>%
+    tab_header(md("**Seminar dates and topics**")) %>%
+    #tab_header("**Seminar dates and topics**") %>%
+    #fmt_markdown() %>% #columns = TRUE
+    # cols_width(Date ~ px(400)#,
+    #            #Topics ~ px(350)#,
+    #            #`Required reading` ~ px(400)
+    #            ) %>%
+    cols_width(Date ~ pct(20),
+               Topics ~ pct(30),
+               `Required reading` ~ pct(50)
+               ) %>%
+    tab_options(data_row.padding = px(3)) %>%
+    tab_options(heading.title.font.size = 14,
+                column_labels.font.weight = "bold",
+                table.font.size = 13) %>%
+     gt_highlight_rows(
+     rows = 5,
+     fill = "lightblue"
+   ) %>% 
+  fmt_markdown() %>% 
+  cols_align(
+    align = "left",
+    columns = everything()
+  )
+
+
+```
+
+
+# 1. Automated text analysis: topic models {background-color="#58748F"}
+
+
+## Automated text analysis: The menu of options
+
+![](../material/img/grimmer_stewart){fig-align="center"}
+
+::: {style="font-size: 30%;"}
+Grimmer, J., & Stewart, B. M. (2013). Text as Data: The Promise and Pitfalls of Automatic Content Analysis Methods for Political Texts. [*Political Analysis*, 21(3), 267--297.](https://doi.org/10.1093/pan/mps028)
+
+:::
+
+
+## The foundations of topic models
+![](../material/img/topic_models){fig-align="center"}
+
+::: {style="font-size: 30%;"}
+Blei, D. M. (2012). Probabilistic topic models. [*Communications of the ACM*, 55(4), 77–84.](https://doi.org/10.1145/2133806.2133826)
+
+:::
+
+
+## Topic models: an application
+
+![](../material/img/pegida){fig-align="center"}
+
+::: {style="font-size: 30%;"}
+Stier, S., Posch, L., Bleier, A., & Strohmaier, M. (2017). When populists become popular: Comparing Facebook use by the right-wing movement Pegida and German political parties. [*Information, Communication & Society*, 20(9), 1365–1388.](https://doi.org/10.1080/1369118X.2017.1328519)
+
+:::
+
+
+## Topic models: validate, validate! [@grimmer_text_2013]
+
+**Semantic validity**
+
+![](../material/img/semantic_validity){fig-align="center"}
+
+
+## Topic models: validate, validate! [@grimmer_text_2013]
+
+**Predictive validity**
+
+![](../material/img/predictive_validity){fig-align="center"}
+
+
+## Topic models: validate, validate! 
+
+Interactive exploration
+
+![](../material/img/LDAvis){width=70%}
+
+::: {style="font-size: 40%;"}
+
+Sievert, C., & Shirley, K. (2014). LDAvis: A method for visualizing and interpreting topics. [*Proceedings of the Workshop on Interactive Language Learning, Visualization, and Interfaces*, 63–70.](https://nlp.stanford.edu/events/illvi2014/papers/sievert-illvi2014.pdf)
+
+:::
+
+
+# 2. Applied text analysis in *R* {background-color="#58748F"}
+
+## We will use *quanteda* 
+- Go to file **5_class_five.R** in [https://sebastianstier.com/ma_css25/material.html](https://sebastianstier.com/ma_css25/material.html)
+
+
+# 3. Large Language Models {background-color="#58748F"}
+
+
+## Think-pair-share
+
+1. Discuss the literature for today with your neighbor (5 min.)
+2. Focus on the used methods, their pros and cons, and the disagreements between the papers
+3. Share and discuss your results with the full class
+
+
+## Main results from Gilardi. et al.
+
+
+![](../material/img/results_gilardi){fig-align="center"}
+
+::: {style="font-size: 50%;"}
+Gilardi, F., Alizadeh, M., & Kubli, M. (2023). ChatGPT outperforms crowd workers for text-annotation tasks. [*Proceedings of the National Academy of Sciences*, 120(30)](https://doi.org/10.1073/pnas.2305016120)
+
+
+:::
+
+
+## Word embeddings: extracting meaning from a word-to-word matrix
+
+![](../material/img/word_word_dimension){fig-align="center"}
+
+::: {style="font-size: 30%;"}
+[https://www.scaler.com/topics/tensorflow/tensorflow-word2vwc/](https://www.scaler.com/topics/tensorflow/tensorflow-word2vwc/)
+
+:::
+
+
+
+## Word embeddings
+
+![](../material/img/bonikowski_model){fig-align="center"}
+
+::: {style="font-size: 40%;"}
+Bonikowski, B., Luo, Y., & Stuhler, O. (2022). Politics as Usual? Measuring Populism, Nationalism, and Authoritarianism in U.S. Presidential Campaigns (1952–2020) with Neural Language Models. [*Sociological Methods & Research*, 51(4), 1721–1787.](https://doi.org/10.1177/00491241221122317)
+
+:::
+
+## Word embeddings
+
+![](../material/img/word_emb.png){fig-align="center"}
+
+::: {style="font-size: 50%;"}
+[https://nlp.stanford.edu/projects/histwords/](https://doi.org/10.1177/0038038519853146)
+
+:::
+
+
+
+## What are (Large) Language Models?
+
+- Language models consist of a neural network with many parameters (typically billions of weights), trained on large quantities of unlabeled text using self-supervised learning
+- Examples: BERT, GPT 2/3/4, (Google) Gemini
+
+
+## The basis of LLMs: neural networks
+
+![](../material/img/neural_network){fig-align="center"}
+
+
+## This field is evolving **quickly**
+
+![](../material/img/llm_tree.jpeg){fig-align="center"}
+
+::: {style="font-size: 50%;"}
+[https://github.com/Mooler0410/LLMsPracticalGuide](https://github.com/Mooler0410/LLMsPracticalGuide)
+
+:::
+
+
+## How to interact with LLMs
+
+- **Zero shot learning**: the user writes a natural language instruction (commonly called "prompt") for the LLM that instructs it to perform a certain task
+- **Few shot learning**: the user writes a prompt for the LLM that instructs it to perform a certain task + provides some examples
+- **Instruction tuning**: the user trains a pre-trained model on task-related data. During fine tuning, model parameters are updated. A medium to large amount of labelled training data (i.e., examples that are annotated with the desired model output) is required.
+
+
+
+## If you do use ChatGPT in your research, use it responsibly and transparently
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+![](../material/img/dfg_llm_guidelines1)
+
+:::
+
+::: {.column width="50%"}
+
+![](../material/img/dfg_llm_guidelines2)
+
+::: {style="font-size: 50%;"}
+
+:::
+
+:::
+
+
+::: {style="font-size: 50%;"}
+
+[https://www.dfg.de/en/news/news-topics/announcements-proposals/2023/info-wissenschaft-23-72](https://www.dfg.de/en/news/news-topics/announcements-proposals/2023/info-wissenschaft-23-72)
+
+:::
+
+::::
+
+
+# 4. Applied text analysis in *R* {background-color="#58748F"}
+
+## 
+- Go to file **5_class_five.R** in [https://sebastianstier.com/ma_css25/material.html](https://sebastianstier.com/ma_css25/material.html)
+
+
+
+# See you on 30 April 2025 {background-color="#58748F"} 
+
+## References
