@@ -1,6 +1,6 @@
 ---
 title: Computational Social Science Methods and Digital Behavioral Data
-subtitle: "University of Mannheim<br>Spring Semester 2025"
+subtitle: "University of Mannheim<br>Spring Semester 2026"
 section-divs: false
 toc: false
 title-block-banner: "#58748F"

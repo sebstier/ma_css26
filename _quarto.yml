@@ -4,7 +4,7 @@ project:
 
 website:
   title: "Computational Social Science and Digital Behavioral Data"
-  site-url: "https://sebstier.github.io/ma_css25/"
+  site-url: "https://sebstier.github.io/ma_css26/"
   search: false
   navbar:
     left:
@@ -18,7 +18,7 @@ website:
       - text: ILIAS
         href: "https://ilias.uni-mannheim.de/ilias.php?baseClass=ilrepositorygui&ref_id=1527661"
   page-footer:
-    left: "Sebastian Stier 2025"
+    left: "Sebastian Stier 2026"
     right: "Powered by [Quarto](https://quarto.org)"
 
 format:
