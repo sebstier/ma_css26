@@ -3,7 +3,7 @@
 #' author: "Sebastian Stier"
 #' class: 1
 #' institute: University of Mannheim & GESIS
-#' date: "2025-02-12"
+#' date: "2026-02-11"
 
 
 # Exercise 0: Install [R](https://cran.rstudio.com) and [RStudio Desktop](https://posit.co/downloads/) ----

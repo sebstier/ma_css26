@@ -1,9 +1,9 @@
 #' class: "Computational Social Science and Digital Behavioral Data, University of Mannheim"
 #' title: "Introduction"
 #' author: "Sebastian Stier"
-#' lesson: 1
+#' lesson: 0
 #' institute: University of Mannheim & GESIS
-#' date: "2025-02-12"
+#' date: "2026-02-11"
 
 
 # Base R code snippets ----
