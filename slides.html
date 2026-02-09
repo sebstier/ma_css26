@@ -62,9 +62,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-date','listing-title','listing-author',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
+      valueNames: [{ data: ['index'] },{ data: ['categories'] }],
       
-      searchColumns: ["listing-date","listing-title","listing-author"],
+      searchColumns: [],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -181,29 +181,9 @@ window.Quarto = {
 <table class="quarto-listing-table table">
 <thead>
 <tr>
-<th>
-Date
-</th>
-<th>
-Title
-</th>
-<th>
-Author
-</th>
 </tr>
 </thead>
 <tbody class="list">
-<tr data-index="0" data-listing-date-sort="1770764400000" data-listing-file-modified-sort="1770505935472" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12" data-listing-word-count-sort="2373" data-listing-title-sort="Introduction" data-listing-filename-sort="01_introduction.qmd">
-<td>
-<span class="listing-date">Feb 11, 2026</span>
-</td>
-<td>
-<a href="./slides/01_introduction.html" class="title listing-title">Introduction</a>
-</td>
-<td>
-<span class="listing-author">Sebastian Stier</span>
-</td>
-</tr>
 </tbody>
 </table>
 <div class="listing-no-matching d-none">
