@@ -1,9 +1,7 @@
 #' course: "Computational Social Science and Digital Behavioral Data, University of Mannheim"
-#' title: "Introduction"
+#' title: "Basic tidyverse and data wrangling"
 #' author: "Sebastian Stier"
-#' class: 1
 #' institute: University of Mannheim & GESIS
-#' date: "2026-02-11"
 
 
 # Exercise 0: Install [R](https://cran.rstudio.com) and [RStudio Desktop](https://posit.co/downloads/) ----
