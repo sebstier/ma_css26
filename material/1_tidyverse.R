@@ -91,40 +91,27 @@ View(gapminder)
 summary(gapminder)
 typeof(gapminder$pop)
 
-# Produce a data frame with the data for Germany and some additional countries
-gapminder_ger <- gapminder %>% 
-  filter(country == "Germany")
-nrow(gapminder)
-nrow(gapminder_ger)
-# Equivalent result in base r
-gapminder_ger <- base::subset(gapminder, country == "Germany")
+# Produce a data frame with the data for Germany
 
 # Produce a data frame with the data for Germany and France
-gapminder_ger_fra <- gapminder %>% 
-  filter(country == "Germany" | country == "France")
-nrow(gapminder_ger_fra)
-gapminder_ger_fra
+
 
 # Subset the data to France and the year 2007
-gapminder %>% 
-  filter(country == "France" | year == 2007) %>% 
-  # and arrange the dataframe based on the nr. of observations
-  count(country) %>% 
-  arrange(desc(n))
 
 # How many countries do we have in the data? List them
-gapminder %>% 
-  count(country)
-unique(gapminder$country)
-n_distinct(gapminder$country)
+
 
 # Pipe-Operation with filter(), arrange()
 # Select all country-years with a population size < 100 Mio., 
 # arrange by GDP/capita in decreasing order (show the top 5 country-years)
-gapminder %>% 
-  filter(pop < 100000000) %>% 
-  arrange(desc(gdpPercap)) %>% 
-  #head(5)
-  tail(5)
+
+
+# Calculate the (worldwide) average GDP per capita 
+
+# Now do the (worldwide) average GDP per capita per year per continent
+
+# We will assess the differences between mutate vs summarise
+
+
 
 
