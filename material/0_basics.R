@@ -13,6 +13,9 @@
 #This is a comment. It is not executed in the code, but
 #serves for documentation purposes
 
+mtcars %>% 
+  select(cyl, hp)
+
 #You can execute code by:
 #(a) Copying code into the console below (not recommended!)
 #(b) Highlighting code in the script and executing with CTRL/apple-CMD + ENTER

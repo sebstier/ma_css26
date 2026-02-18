@@ -11,7 +11,7 @@
 ## a. Create a folder for the R scripts and materials of this class and 
       # set the R working directory to this folder.
 getwd()
-setwd("YOURPATH")
+setwd("yourpath")
 setwd(dirname(rstudioapi::getActiveDocumentContext()$path)) 
 
 # wd not needed if you create a project that will set the wd for you
@@ -33,10 +33,10 @@ colnames(starwars)
 names(starwars)
 row.names(starwars)
 select(starwars, height)
+?select
 select(starwars, c(height, mass, sex))
 starwars %>% 
-  select(., c(height, mass)) %>% 
-  mutate(new_var = height+mass)
+  select(height, mass)
 
 # how to get the pipe?
 # CTRL + SHIFT + M
@@ -74,7 +74,8 @@ select(gapminder, c(year, country))
 glimpse(gapminder)
 
 # You can call functions from specific packages
-dplyr::select()
+?dplyr::alpha()
+psych::alpha()
 #library(psych)
 
 # Look up the values in a variable
@@ -91,6 +92,8 @@ View(gapminder)
 summary(gapminder)
 typeof(gapminder$pop)
 
+### HOMEWORK ####
+# you need the function ?filter
 # Produce a data frame with the data for Germany
 
 # Produce a data frame with the data for Germany and France
@@ -100,6 +103,7 @@ typeof(gapminder$pop)
 
 # How many countries do we have in the data? List them
 
+### HOMEWORK ####
 
 # Pipe-Operation with filter(), arrange()
 # Select all country-years with a population size < 100 Mio., 

@@ -126,39 +126,179 @@
     "text": "References"
   },
   {
-    "objectID": "material.html",
-    "href": "material.html",
-    "title": "Computational Social Science and Digital Behavioral Data",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Computational Social Science Methods and Digital Behavioral Data",
     "section": "",
-    "text": "File Name\n\n\nModified\n\n\n\n\n\n\n0_basics.R\n\n\n2/8/26, 12:14:22 AM\n\n\n\n\n1_tidyverse.R\n\n\n2/17/26, 5:32:56 PM\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "material.html#material-for-sessions",
-    "href": "material.html#material-for-sessions",
-    "title": "Computational Social Science and Digital Behavioral Data",
-    "section": "",
-    "text": "File Name\n\n\nModified\n\n\n\n\n\n\n0_basics.R\n\n\n2/8/26, 12:14:22 AM\n\n\n\n\n1_tidyverse.R\n\n\n2/17/26, 5:32:56 PM\n\n\n\n\n\nNo matching items"
+    "text": "Lecturer\nSebastian Stier\nProfessor @ University of Mannheim & Scientific Director Department Computational Social Science @ GESIS\n\nAbout the course\nComputational Social Science (CSS) is a young research field at the intersection of various social science disciplines, data science and computer science. The goal is to gain new insights into society through large amounts of data and the direct observation of human behavior. CSS relies on two cornerstones: digital behavioral data, which can be collected from online platforms or sensors like smartphones, and computer science methods such as automated text analysis to create appropriate measures for social science research questions. In the course, students will get to know foundational studies, theories and methods used in the field of CSS. We will discuss infrastructural, ethical and legal challenges and how to navigate these to devise appropriate research designs in CSS.\nThe course will be application oriented. Students will familiarize themselves with the main applications of CSS methods and implement them in R. The range of applications will cover data management and preprocessing, the application of machine learning, data and results visualization, statistical data analysis and the validation of results. The hands-on application examples will cover questions from various research fields and different data types like social media data or web browsing histories. Equipped with this theoretical and methodological toolkit, students will develop their own CSS research projects.\nSchedule\n\n\n\n\n\n  \n    \n    \n    \n  \n  \n    \n      Seminar dates and topics\n    \n    \n    \n      Date\n      Topics\n      Required reading\n    \n  \n  \n    11 February 2026\n\nIntroduction and expectations\nFoundations of CSS\nGetting started in R\n\n\n\n    18 February 2026\n\nFoundations of CSS\nWhat is digital behavioral data\nThe R tidyverse\n\n\nLazer, D., & Radford, J. (2017). Data ex Machina: Introduction to Big Data. Annual Review of Sociology, 43(1), 19–39. \nWagner, C., Stier, S., & Zens, M. (2025). What is Digital Behavioral Data? GESIS Guides to Digital Behavioral Data, 1.\n    25 February 2026\n\nWriting papers and reviews\nUsing AI in academic research\n\n\nDash, A., Das, S., Kirsten, E., Wu, Q., Karnam, S. K., Gummadi, K. P., Holz, T., Zafar, M. B., & Zannettou, S. (2026). The Algorithmic Self-Portrait: Deconstructing Memory in ChatGPT. arXiv.  \nUniversity of Mannheim (2023). ChatGPT im Studium. AI-generated English translation.\n    4 March 2026\n\nResearch ethics in CSS\nSocial media, web data and web scraping\nAPIs and web data collection\n\n\nFiesler, C., & Proferes, N. (2018). ‘Participant’ Perceptions of Twitter Research Ethics. Social Media + Society, 4(1). \nFreelon, D. (2018). Computational Research in the Post-API Age. Political Communication, 35(4), 665–668.\n    11 March 2026\n\nLarge online platforms and platform regulation\nDigital Services Act\nAPIs and web data collection, continued\n\n\nBak-Coleman, J., O’Connor, C., Bergstrom, C., & West, J. (2025). The Risks of Industry Influence in Tech Research. arXiv. \nPierri, F., Araujo, T., Kruikemeier, S., Lorenz-Spreen, P., Abeele, M. M. P. V., Vandenbosch, L., Gonçalves-Sa, J., & Grabowicz, P. A. (2025). Research Opportunities and Challenges of the EU’s Digital Services Act. arXiv.\n    18 March 2026\n\nUser-centered data collections\nLinking surveys and digital behavioral data\nData donations\nData visualization\n\n\nMangold, F., & Stier, S. (2025). Overview of Working with Web Tracking Data. GESIS Guides to Digital Behavioral Data, 23. \nSilber, H., et al. Linking Surveys and Digital Trace Data: Insights From two Studies on Determinants of Data Sharing Behaviour. Journal of the Royal Statistical Society Series A: Statistics in Society, 185(S2), S387–S407.\n    25 March 2026\n\nIntroduction to automated text analysis\nSupervised and unsupervised models\nValidation of model results\n\n\nSchwemmer, C., & Wieczorek, O. (2020). The Methodological Divide of Sociology: Evidence from Two Decades of Journal Publications. Sociology, 54(1), 3–21. \nStuhler, O., Ton, C. D., & Ollion, E. (2025). From Codebooks to Promptbooks: Extracting Information from Text with Generative Large Language Models. Sociological Methods & Research, 54(3), 794–848.\n    15 April 2026\n\nLarge Language Models\n\n\nGilardi, F., Alizadeh, M., & Kubli, M. (2023). ChatGPT outperforms crowd workers for text-annotation tasks. PNAS, 120(30).  \nReiss, M. V. (2023). Testing the Reliability of ChatGPT for Text Annotation and Classification: A Cautionary Remark. arXiv Preprint.\n    22 April 2026\n\nData quality in CSS\nNetwork analysis\n\n\nJungherr, A. (2018). Normalizing digital trace data. In N. J. Stroud & S. C. McGregor (Eds.), Digital Discussions: How Big Data Informs Political Communication (pp. 9–35). New York: Routledge. \nSen, I., Flöck, F., Weller, K., Weiß, B., & Wagner, C. (2021). A Total Error Framework for Digital Traces of Human Behavior on Online Platforms. Public Opinion Quarterly, 85(S1), 399–422.\n    29 April 2026\n\nOpen science and reproducibility in CSS\n\n\nChan, C.- Hong, Schatto-Eckrodt, T., & Gruber, J. (2024). What makes computational communication science (ir)reproducible? Computational Communication Research, 6(1). \nNyhan, B., Settle, J., Thorson, E., Wojcieszak, M., Barberá, P., et al. (2023). Like-minded sources on Facebook are prevalent but not polarizing. Nature, 620(7972), 137–144.\n    6 May 2026\n\nWriting reproducible research papers in R\nquarto, OSF, pipelines and workflows\n\n\nBauer, P. C., & Landesvatter, C. (2023). Writing a reproducible paper with RStudio and Quarto. OSF Preprint.\n    13 May 2026\n\nPresentations of thesis ideas\nCoding: troubleshooting\n\n\n\n    20 May 2026\n\nPresentations of thesis ideas\nCoding: troubleshooting\n\n\n\n    27 May 2026\n\nPresentations of thesis ideas\nCoding: troubleshooting\n\n\n\n  \n  \n  \n\n\n\n\nSoftware\n\nR\nA text editor, e.g. RStudio\nQuarto"
   },
   {
     "objectID": "slides.html",
     "href": "slides.html",
     "title": "Computational Social Science and Digital Behavioral Data",
     "section": "",
-    "text": "Date\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nFeb 11, 2026\n\n\nIntroduction\n\n\nSebastian Stier\n\n\n\n\n\nNo matching items"
+    "text": "Date\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nFeb 11, 2026\n\n\nIntroduction\n\n\nSebastian Stier\n\n\n\n\nFeb 18, 2026\n\n\nFoundations of Computational Social Science\n\n\nSebastian Stier\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "slides.html#slides",
     "href": "slides.html#slides",
     "title": "Computational Social Science and Digital Behavioral Data",
     "section": "",
-    "text": "Date\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nFeb 11, 2026\n\n\nIntroduction\n\n\nSebastian Stier\n\n\n\n\n\nNo matching items"
+    "text": "Date\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nFeb 11, 2026\n\n\nIntroduction\n\n\nSebastian Stier\n\n\n\n\nFeb 18, 2026\n\n\nFoundations of Computational Social Science\n\n\nSebastian Stier\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Computational Social Science Methods and Digital Behavioral Data",
+    "objectID": "material.html",
+    "href": "material.html",
+    "title": "Computational Social Science and Digital Behavioral Data",
     "section": "",
-    "text": "Lecturer\nSebastian Stier\nProfessor @ University of Mannheim & Scientific Director Department Computational Social Science @ GESIS\n\nAbout the course\nComputational Social Science (CSS) is a young research field at the intersection of various social science disciplines, data science and computer science. The goal is to gain new insights into society through large amounts of data and the direct observation of human behavior. CSS relies on two cornerstones: digital behavioral data, which can be collected from online platforms or sensors like smartphones, and computer science methods such as automated text analysis to create appropriate measures for social science research questions. In the course, students will get to know foundational studies, theories and methods used in the field of CSS. We will discuss infrastructural, ethical and legal challenges and how to navigate these to devise appropriate research designs in CSS.\nThe course will be application oriented. Students will familiarize themselves with the main applications of CSS methods and implement them in R. The range of applications will cover data management and preprocessing, the application of machine learning, data and results visualization, statistical data analysis and the validation of results. The hands-on application examples will cover questions from various research fields and different data types like social media data or web browsing histories. Equipped with this theoretical and methodological toolkit, students will develop their own CSS research projects.\nSchedule\n\n\n\n\n\n  \n    \n    \n    \n  \n  \n    \n      Seminar dates and topics\n    \n    \n    \n      Date\n      Topics\n      Required reading\n    \n  \n  \n    11 February 2026\n\nIntroduction and expectations\nFoundations of CSS\nGetting started in R\n\n\n\n    18 February 2026\n\nFoundations of CSS\nWhat is digital behavioral data\nThe R tidyverse\n\n\nLazer, D., & Radford, J. (2017). Data ex Machina: Introduction to Big Data. Annual Review of Sociology, 43(1), 19–39. \nWagner, C., Stier, S., & Zens, M. (2025). What is Digital Behavioral Data? GESIS Guides to Digital Behavioral Data, 1.\n    25 February 2026\n\nWriting papers and reviews\nUsing AI in academic research\n\n\nDash, A., Das, S., Kirsten, E., Wu, Q., Karnam, S. K., Gummadi, K. P., Holz, T., Zafar, M. B., & Zannettou, S. (2026). The Algorithmic Self-Portrait: Deconstructing Memory in ChatGPT. arXiv.  \nUniversity of Mannheim (2023). ChatGPT im Studium. AI-generated English translation.\n    4 March 2026\n\nResearch ethics in CSS\nSocial media, web data and web scraping\nAPIs and web data collection\n\n\nFiesler, C., & Proferes, N. (2018). ‘Participant’ Perceptions of Twitter Research Ethics. Social Media + Society, 4(1). \nFreelon, D. (2018). Computational Research in the Post-API Age. Political Communication, 35(4), 665–668.\n    11 March 2026\n\nLarge online platforms and platform regulation\nDigital Services Act\nAPIs and web data collection, continued\n\n\nBak-Coleman, J., O’Connor, C., Bergstrom, C., & West, J. (2025). The Risks of Industry Influence in Tech Research. arXiv. \nPierri, F., Araujo, T., Kruikemeier, S., Lorenz-Spreen, P., Abeele, M. M. P. V., Vandenbosch, L., Gonçalves-Sa, J., & Grabowicz, P. A. (2025). Research Opportunities and Challenges of the EU’s Digital Services Act. arXiv.\n    18 March 2026\n\nUser-centered data collections\nLinking surveys and digital behavioral data\nData donations\nData visualization\n\n\nMangold, F., & Stier, S. (2025). Overview of Working with Web Tracking Data. GESIS Guides to Digital Behavioral Data, 23. \nSilber, H., et al. Linking Surveys and Digital Trace Data: Insights From two Studies on Determinants of Data Sharing Behaviour. Journal of the Royal Statistical Society Series A: Statistics in Society, 185(S2), S387–S407.\n    25 March 2026\n\nIntroduction to automated text analysis\nSupervised and unsupervised models\nValidation of model results\n\n\nSchwemmer, C., & Wieczorek, O. (2020). The Methodological Divide of Sociology: Evidence from Two Decades of Journal Publications. Sociology, 54(1), 3–21. \nStuhler, O., Ton, C. D., & Ollion, E. (2025). From Codebooks to Promptbooks: Extracting Information from Text with Generative Large Language Models. Sociological Methods & Research, 54(3), 794–848.\n    15 April 2026\n\nLarge Language Models\n\n\nGilardi, F., Alizadeh, M., & Kubli, M. (2023). ChatGPT outperforms crowd workers for text-annotation tasks. PNAS, 120(30).  \nReiss, M. V. (2023). Testing the Reliability of ChatGPT for Text Annotation and Classification: A Cautionary Remark. arXiv Preprint.\n    22 April 2026\n\nData quality in CSS\nNetwork analysis\n\n\nJungherr, A. (2018). Normalizing digital trace data. In N. J. Stroud & S. C. McGregor (Eds.), Digital Discussions: How Big Data Informs Political Communication (pp. 9–35). New York: Routledge. \nSen, I., Flöck, F., Weller, K., Weiß, B., & Wagner, C. (2021). A Total Error Framework for Digital Traces of Human Behavior on Online Platforms. Public Opinion Quarterly, 85(S1), 399–422.\n    29 April 2026\n\nOpen science and reproducibility in CSS\n\n\nChan, C.- Hong, Schatto-Eckrodt, T., & Gruber, J. (2024). What makes computational communication science (ir)reproducible? Computational Communication Research, 6(1). \nNyhan, B., Settle, J., Thorson, E., Wojcieszak, M., Barberá, P., et al. (2023). Like-minded sources on Facebook are prevalent but not polarizing. Nature, 620(7972), 137–144.\n    6 May 2026\n\nWriting reproducible research papers in R\nquarto, OSF, pipelines and workflows\n\n\nBauer, P. C., & Landesvatter, C. (2023). Writing a reproducible paper with RStudio and Quarto. OSF Preprint.\n    13 May 2026\n\nPresentations of thesis ideas\nCoding: troubleshooting\n\n\n\n    20 May 2026\n\nPresentations of thesis ideas\nCoding: troubleshooting\n\n\n\n    27 May 2026\n\nPresentations of thesis ideas\nCoding: troubleshooting\n\n\n\n  \n  \n  \n\n\n\n\nSoftware\n\nR\nA text editor, e.g. RStudio\nQuarto"
+    "text": "File Name\n\n\nModified\n\n\n\n\n\n\n0_basics.R\n\n\n2/18/26, 9:50:37 AM\n\n\n\n\n1_tidyverse.R\n\n\n2/18/26, 10:02:30 AM\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "material.html#material-for-sessions",
+    "href": "material.html#material-for-sessions",
+    "title": "Computational Social Science and Digital Behavioral Data",
+    "section": "",
+    "text": "File Name\n\n\nModified\n\n\n\n\n\n\n0_basics.R\n\n\n2/18/26, 9:50:37 AM\n\n\n\n\n1_tidyverse.R\n\n\n2/18/26, 10:02:30 AM\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "slides/02_css_dbd.html#agenda-for-today",
+    "href": "slides/02_css_dbd.html#agenda-for-today",
+    "title": "Foundations of Computational Social Science",
+    "section": "Agenda for today",
+    "text": "Agenda for today\n\nIntroduction to Computational Social Science\nR: Warmup session and introduction to the tidyverse"
+  },
+  {
+    "objectID": "slides/02_css_dbd.html#section",
+    "href": "slides/02_css_dbd.html#section",
+    "title": "Foundations of Computational Social Science",
+    "section": "",
+    "text": "Seminar dates and topics\n    \n    \n    \n      Date\n      Topics\n      Required reading\n    \n  \n  \n    11 February 2026\n\nIntroduction and expectations\nFoundations of CSS\nGetting started in R\n\n\n\n    18 February 2026\n\nFoundations of CSS\nWhat is digital behavioral data\nThe R tidyverse\n\n\nLazer, D., & Radford, J. (2017). Data ex Machina: Introduction to Big Data. Annual Review of Sociology, 43(1), 19–39. \nWagner, C., Stier, S., & Zens, M. (2025). What is Digital Behavioral Data? GESIS Guides to Digital Behavioral Data, 1.\n    25 February 2026\n\nWriting papers and reviews\nUsing AI in academic research\n\n\nDash, A., Das, S., Kirsten, E., Wu, Q., Karnam, S. K., Gummadi, K. P., Holz, T., Zafar, M. B., & Zannettou, S. (2026). The Algorithmic Self-Portrait: Deconstructing Memory in ChatGPT. arXiv.  \nUniversity of Mannheim (2023). ChatGPT im Studium. AI-generated English translation.\n    4 March 2026\n\nResearch ethics in CSS\nSocial media, web data and web scraping\nAPIs and web data collection\n\n\nFiesler, C., & Proferes, N. (2018). ‘Participant’ Perceptions of Twitter Research Ethics. Social Media + Society, 4(1). \nFreelon, D. (2018). Computational Research in the Post-API Age. Political Communication, 35(4), 665–668.\n    11 March 2026\n\nLarge online platforms and platform regulation\nDigital Services Act\nAPIs and web data collection, continued\n\n\nBak-Coleman, J., O’Connor, C., Bergstrom, C., & West, J. (2025). The Risks of Industry Influence in Tech Research. arXiv. \nPierri, F., Araujo, T., Kruikemeier, S., Lorenz-Spreen, P., Abeele, M. M. P. V., Vandenbosch, L., Gonçalves-Sa, J., & Grabowicz, P. A. (2025). Research Opportunities and Challenges of the EU’s Digital Services Act. arXiv.\n    18 March 2026\n\nUser-centered data collections\nLinking surveys and digital behavioral data\nData donations\nData visualization\n\n\nMangold, F., & Stier, S. (2025). Overview of Working with Web Tracking Data. GESIS Guides to Digital Behavioral Data, 23. \nSilber, H., et al. Linking Surveys and Digital Trace Data: Insights From two Studies on Determinants of Data Sharing Behaviour. Journal of the Royal Statistical Society Series A: Statistics in Society, 185(S2), S387–S407.\n    25 March 2026\n\nIntroduction to automated text analysis\nSupervised and unsupervised models\nValidation of model results\n\n\nSchwemmer, C., & Wieczorek, O. (2020). The Methodological Divide of Sociology: Evidence from Two Decades of Journal Publications. Sociology, 54(1), 3–21. \nStuhler, O., Ton, C. D., & Ollion, E. (2025). From Codebooks to Promptbooks: Extracting Information from Text with Generative Large Language Models. Sociological Methods & Research, 54(3), 794–848."
+  },
+  {
+    "objectID": "slides/02_css_dbd.html#vast-amounts-of-data",
+    "href": "slides/02_css_dbd.html#vast-amounts-of-data",
+    "title": "Foundations of Computational Social Science",
+    "section": "Vast amounts of data",
+    "text": "Vast amounts of data\n\n\n\nhttps://www.forbes.com/sites/bernardmarr/2018/05/21/how-much-data-do-we-create-every-day-the-mind-blowing-stats-everyone-should-read/#44598c0460ba"
+  },
+  {
+    "objectID": "slides/02_css_dbd.html#think-pair-share",
+    "href": "slides/02_css_dbd.html#think-pair-share",
+    "title": "Foundations of Computational Social Science",
+    "section": "Think-pair-share",
+    "text": "Think-pair-share\n\n\nDiscuss the literature for today with your neighbor (5 min.)\nWhat is computational social science, what are digital behavioral data?\nWhat is the scientific benefit of CSS and what role do substantive research areas play in the two papers?\nShare your the results of your discussion in the class\n\n\n\n\n\n\nLazer, D., & Radford, J. (2017). Data ex Machina: Introduction to Big Data. Annual Review of Sociology, 43(1), 19–39.\n\n\n\n\nWagner, C., Stier, S., & Zens, M. (2025). What is Digital Behavioral Data? GESIS Guides to Digital Behavioral Data, 1."
+  },
+  {
+    "objectID": "slides/02_css_dbd.html#some-definitions-i",
+    "href": "slides/02_css_dbd.html#some-definitions-i",
+    "title": "Foundations of Computational Social Science",
+    "section": "Some definitions I",
+    "text": "Some definitions I\nWe define CSS as the development and application of computational methods to complex, typically large-scale, human (sometimes simulated) behavioral data (1). […] Whereas traditional quantitative social science has focused on rows of cases and columns of variables, typically with assumptions of independence among observations, CSS encompasses language, location and movement, networks, images, and video, with the application of statistical models that capture multifarious dependencies within data.\n\nLazer, D. M. J., et al. (2020). Computational social science: Obstacles and opportunities. Science, 369(6507), 1060–1062: 1060."
+  },
+  {
+    "objectID": "slides/02_css_dbd.html#some-definitions-ii",
+    "href": "slides/02_css_dbd.html#some-definitions-ii",
+    "title": "Foundations of Computational Social Science",
+    "section": "Some definitions II",
+    "text": "Some definitions II\nComputational social science is an interdisciplinary field that advances theories of human behavior by applying computational techniques to large datasets from social media sites, the Internet, or other digitized archives such as administrative records. Our definition forefronts sociological theory because we believe the future of the field within sociology depends not only on novel data sources and methods, but also on its capacity to produce new theories of human behavior or elaborate on existing explanations of the social world.\n\nEdelmann, A., Wolff, T., Montagne, D., & Bail, C. A. (2020). Computational Social Science and Sociology. Annual Review of Sociology, 46(1), 61–81: 62."
+  },
+  {
+    "objectID": "slides/02_css_dbd.html#digital-behavioral-data",
+    "href": "slides/02_css_dbd.html#digital-behavioral-data",
+    "title": "Foundations of Computational Social Science",
+    "section": "Digital behavioral data",
+    "text": "Digital behavioral data\n\n\n\n\n\n“We call these research data “digital behavioral data” (DBD). DBD encompass digital observations of human or algorithmic behavior. DBD are generated (1) through interactions and content production online (e.g., on platforms such as Google, Facebook or websites on the World Wide Web) or (2) by software or sensors for recording specific processes (e.g., smartphones, RFID sensors, satellites, street view cameras, or web tracking).\n\n\nWagner, C., Stier, S., & Zens, M. (2025). What is Digital Behavioral Data? GESIS Guides to Digital Behavioral Data, 1."
+  },
+  {
+    "objectID": "slides/02_css_dbd.html#how-does-css-relate-to-established-social-science-methods",
+    "href": "slides/02_css_dbd.html#how-does-css-relate-to-established-social-science-methods",
+    "title": "Foundations of Computational Social Science",
+    "section": "How does CSS relate to established social science methods?",
+    "text": "How does CSS relate to established social science methods?"
+  },
+  {
+    "objectID": "slides/02_css_dbd.html#measurement-problems-in-the-social-sciences",
+    "href": "slides/02_css_dbd.html#measurement-problems-in-the-social-sciences",
+    "title": "Foundations of Computational Social Science",
+    "section": "Measurement problems in the social sciences",
+    "text": "Measurement problems in the social sciences\n\n\n\n\n“This study compares self-reports of Internet use with client log files from a large household sample. Results show that the accuracy of self reported frequency and duration of Internet use is quite low, and that survey data are only moderately correlated with log file data.”\n\n\nScharkow, M. (2016). The Accuracy of Self-Reported Internet Use—A Validation Study Using Client Log Data. Communication Methods and Measures, 10(1), 13–27.\n\n\n\n\n“Based on 106 effect sizes, we found that self-reported media use correlates only moderately with logged measurements […] These findings raise concerns about the validity of findings relying solely on self-reported measures of media use.”\n\n\nParry, D. A., Davidson, B. I., Sewall, C. J. R., Fisher, J. T., Mieczkowski, H., & Quintana, D. S. (2021). A systematic review and meta-analysis of discrepancies between logged and self-reported digital media use. Nature Human Behaviour, 5, 1535–154."
+  },
+  {
+    "objectID": "slides/02_css_dbd.html#advantages-of-digital-behavioral-data",
+    "href": "slides/02_css_dbd.html#advantages-of-digital-behavioral-data",
+    "title": "Foundations of Computational Social Science",
+    "section": "Advantages of digital behavioral data",
+    "text": "Advantages of digital behavioral data\n\nDigital behavioral data capture human behavior…\n\nnon-intrusively,\nreliably,\nwith fine-grained and multi-dimensional features,\nacross time and contexts."
+  },
+  {
+    "objectID": "slides/02_css_dbd.html#downsides-of-digital-behavioral-data",
+    "href": "slides/02_css_dbd.html#downsides-of-digital-behavioral-data",
+    "title": "Foundations of Computational Social Science",
+    "section": "Downsides of digital behavioral data",
+    "text": "Downsides of digital behavioral data\n\nBut, digital behavioral data…\n\ncome in large volumes,\nare unstructured,\nare multi-dimensional (text, images, videos, audio, …),\nare often produced and provided with minimal or no information on the data generating process.\n\n\n\n\\(\\rightarrow\\) Analyzing digital behavioral data in a scientifically meaningful way is an immense challenge"
+  },
+  {
+    "objectID": "slides/02_css_dbd.html#the-role-of-theory-and-existing-knowledge",
+    "href": "slides/02_css_dbd.html#the-role-of-theory-and-existing-knowledge",
+    "title": "Foundations of Computational Social Science",
+    "section": "The role of theory and existing knowledge",
+    "text": "The role of theory and existing knowledge\n“Our definition forefronts sociological theory because we believe the future of the field within sociology depends not only on novel data sources and methods, but also on its capacity to produce new theories of human behavior or elaborate on existing explanations of the social world.” (Edelmann et al. 2020: 62)"
+  },
+  {
+    "objectID": "slides/02_css_dbd.html#explanation-vs.-description-i",
+    "href": "slides/02_css_dbd.html#explanation-vs.-description-i",
+    "title": "Foundations of Computational Social Science",
+    "section": "Explanation vs. description I",
+    "text": "Explanation vs. description I\n\n\n\n\nMunger, K., Guess, A. M., & Hargittai, E. (2021). Quantitative Description of Digital Media: A Modest Proposal to Disrupt Academic Publishing. Journal of Quantitative Description: Digital Media, 1.\n\n\n\n“First and foremost, we respond to an undersupply of quantitative descriptive research in social science. Causal research that asks the question why has largely taken the place of descriptive research that asks the question what. Gerring (2012) diagnosed a general tendency to dismiss ‘Mere Description’ as a ‘mundane task … of little intrinsic scientific value,’ advocating instead that it be taken seriously as part of the general social scientific method.\nWe firmly agree. However, critique alone does not change the material conditions and incentives of practicing academics; we see this journal as a practical step towards raising the status of description as a method.” (Munger, Guess, and Hargittai 2021: 3-4)"
+  },
+  {
+    "objectID": "slides/02_css_dbd.html#explanation-vs.-description-ii",
+    "href": "slides/02_css_dbd.html#explanation-vs.-description-ii",
+    "title": "Foundations of Computational Social Science",
+    "section": "Explanation vs. description II",
+    "text": "Explanation vs. description II\n\n\n\n\nMunger, K., Guess, A. M., & Hargittai, E. (2021). Quantitative Description of Digital Media: A Modest Proposal to Disrupt Academic Publishing. Journal of Quantitative Description: Digital Media, 1.\n\n\n\nSecond, rather than define our new venue in terms of existing disciplinary boundaries, we instead embrace a topical focus on digital media, broadly construed. We argue that the centrality and dynamism of digital media — information and communication technologies, including social media, that increasingly structure the way people interact with the world — necessitates increased scholarly energy devoted to sustained, continuous, quantitative description. […]\nToday, there are more hours of video uploaded to YouTube every day than were broadcast in the 1950s U.S. in a year. The daily content of Twitter is different (and different in unpredictable ways) than it was the day before.” (Munger, Guess, and Hargittai 2021: 3-4)"
+  },
+  {
+    "objectID": "slides/02_css_dbd.html#examples-of-novel-sociotechnical-phenomena",
+    "href": "slides/02_css_dbd.html#examples-of-novel-sociotechnical-phenomena",
+    "title": "Foundations of Computational Social Science",
+    "section": "Examples of novel sociotechnical phenomena",
+    "text": "Examples of novel sociotechnical phenomena\n\n\nHarmful online communication\n\nE.g., misinformation and deception\nE.g., violent language, harassment, racism\n\nAlgorithmic influence, bias and discrimination\nFilter bubbles and echo chambers\nSocial bots\nVirality of online content and memes\nOnline inequalities"
+  },
+  {
+    "objectID": "slides/02_css_dbd.html#tidyverse-the-swiss-army-knife-of-r",
+    "href": "slides/02_css_dbd.html#tidyverse-the-swiss-army-knife-of-r",
+    "title": "Foundations of Computational Social Science",
+    "section": "tidyverse: the Swiss Army knife of R",
+    "text": "tidyverse: the Swiss Army knife of R\n\n\nÇetinkaya-Rundel, M., et al. (2021). An educator’s perspective of the tidyverse. arXiv Preprint.\n\n\nIntroduction to tidyverse: https://www.tidyverse.org/packages"
+  },
+  {
+    "objectID": "slides/02_css_dbd.html#before-we-really-get-started-with-coding",
+    "href": "slides/02_css_dbd.html#before-we-really-get-started-with-coding",
+    "title": "Foundations of Computational Social Science",
+    "section": "Before we really get started with coding…",
+    "text": "Before we really get started with coding…\nA simple ggplot figure.\n\n\n\n```{r}\n#| output-location: column\n#| code-line-numbers: \"6|7|8|9|10\"\n\nlibrary(ggplot2)\nmtcars %&gt;%\n  ggplot(aes(x = disp, y = mpg)) +\n  geom_point() +\n  geom_smooth(method = \"loess\", formula = \"y ~ x\") +\n  theme_minimal()\n```"
+  },
+  {
+    "objectID": "slides/02_css_dbd.html#alternatives",
+    "href": "slides/02_css_dbd.html#alternatives",
+    "title": "Foundations of Computational Social Science",
+    "section": "Alternatives",
+    "text": "Alternatives\n\n```{r, eval=FALSE}\nlibrary(ggplot2)\n    mtcars %&gt;%ggplot(aes(x = disp, y = mpg))+geom_point() +geom_smooth(method = \"loess\", formula = \"y ~ x\")+theme_minimal()\n```\n\n\n```{r, eval=FALSE}\nlibrary(ggplot2)\n  ggplot(mtcars,aes(x=disp, y=mpg))+geom_point()+\n      geom_smooth(method=\"loess\",formula=\"y~x\")+theme_minimal()\n```\n\n\n```{r, eval=FALSE}\nlibrary(ggplot2)\nmtcars %&gt;%\n  ggplot(aes(x = disp, y = mpg)) +\n  geom_point() +\n  geom_smooth(method = \"loess\", formula = \"y ~ x\")\n```\n\n\nLuckily, there is guidance: https://style.tidyverse.org/index.html"
+  },
+  {
+    "objectID": "slides/02_css_dbd.html#finally-some-coding",
+    "href": "slides/02_css_dbd.html#finally-some-coding",
+    "title": "Foundations of Computational Social Science",
+    "section": "Finally, some coding",
+    "text": "Finally, some coding\n\nGo to https://sebastianstier.com/ma_css26/material.html\nDownload 1_tidyverse.R and open it in RStudio\nWe start with the first exercises together.\nI will answer questions and help."
+  },
+  {
+    "objectID": "slides/02_css_dbd.html#references",
+    "href": "slides/02_css_dbd.html#references",
+    "title": "Foundations of Computational Social Science",
+    "section": "References",
+    "text": "References\n\n\n\n\nEdelmann, Achim, Tom Wolff, Danielle Montagne, and Christopher A. Bail. 2020. “Computational Social Science and Sociology.” Annual Review of Sociology 46 (1): 61–81. https://doi.org/10.1146/annurev-soc-121919-054621.\n\n\nMunger, Kevin, Andrew M. Guess, and Eszter Hargittai. 2021. “Quantitative Description of Digital Media: A Modest Proposal to Disrupt Academic Publishing.” Journal of Quantitative Description: Digital Media 1. https://doi.org/10.51685/jqd.2021.000."
   },
   {
     "objectID": "myenv/lib/python3.13/site-packages/idna-3.10.dist-info/LICENSE.html",
