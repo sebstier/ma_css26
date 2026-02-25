@@ -73,10 +73,6 @@ select(gapminder, c(year, country))
 
 glimpse(gapminder)
 
-# You can call functions from specific packages
-?dplyr::alpha()
-psych::alpha()
-#library(psych)
 
 # Look up the values in a variable
 table(gapminder$country)
@@ -112,7 +108,9 @@ typeof(gapminder$pop)
 
 # Calculate the (worldwide) average GDP per capita 
 
+
 # Now do the (worldwide) average GDP per capita per year per continent
+
 
 # We will assess the differences between mutate vs summarise
 
