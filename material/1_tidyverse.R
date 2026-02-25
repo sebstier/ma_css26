@@ -73,11 +73,16 @@ select(gapminder, c(year, country))
 
 glimpse(gapminder)
 
+# factors vs. character vectors
+gapminder$country_chr <- as.character(gapminder$country)
 
 # Look up the values in a variable
-table(gapminder$country)
+table(gapminder$country, useNA = "a") # "always
 gapminder %>% 
   count(country)
+?count
+summary(gapminder)
+
 
 # Exercise 3: Gapminder explorations ----
 
@@ -91,29 +96,72 @@ typeof(gapminder$pop)
 ### HOMEWORK ####
 # you need the function ?filter
 # Produce a data frame with the data for Germany
+df.germany <- filter(gapminder, country == "Germany")
+df.germany <- gapminder %>% 
+    filter(country == "Germany")
+ls()
 
 # Produce a data frame with the data for Germany and France
+df.ger_fra_ita <- gapminder %>% 
+  filter(country == "Germany" | country == "France" | country == "Italy")
+df.ger_fra_ita <- gapminder %>% 
+  filter(country == c("Germany", "France", "Italy"))
+df.ger_fra <- gapminder %>% 
+  filter(country %in% c("Germany", "France"))
 
+table(df.ger_fra_ita$country_chr)
+table(df.ger_fra_ita$country)
 
 # Subset the data to France and the year 2007
+df.fra_07 <- gapminder %>% 
+  filter(country == "France" & year == 2007)
 
 # How many countries do we have in the data? List them
+table(gapminder$country)
+gapminder %>% 
+  distinct(country)
+unique(gapminder$country)
+length(unique(gapminder$country))
+summary(gapminder)
 
 ### HOMEWORK ####
 
 # Pipe-Operation with filter(), arrange()
 # Select all country-years with a population size < 100 Mio., 
 # arrange by GDP/capita in decreasing order (show the top 5 country-years)
-
+gapminder %>% 
+  filter(pop < 100000000) %>% 
+  arrange(desc(gdpPercap)) %>% 
+ # tail(n = 5) #tail end of the distribution
+  head(n = 5)
 
 # Calculate the (worldwide) average GDP per capita 
-
+gapminder$gdpPercap_recoded <- gapminder$gdpPercap
+gapminder$gdpPercap_recoded[1] <- NA
+gapminder$gdpPercap[1]
+mean(gapminder$gdpPercap)
+mean(gapminder$gdpPercap_recoded)
+mean(gapminder$gdpPercap_recoded, na.rm = T)
+gapminder %>% 
+  summarise(mean_gdp = mean(gdpPercap))
 
 # Now do the (worldwide) average GDP per capita per year per continent
-
+gapminder %>% 
+  group_by(year, continent) %>% 
+  summarise(mean_gdp = mean(gdpPercap))
+df_gdp_mean_continent_year <- gapminder %>% 
+  group_by(year, continent) %>% 
+  summarise(mean_gdp = mean(gdpPercap))
+View(df_gdp_mean_continent_year)
 
 # We will assess the differences between mutate vs summarise
-
-
-
+hist(gapminder$pop)
+hist(gapminder$gdpPercap)
+gapminder_transformed <- gapminder %>% 
+  mutate(gdp_logged = log10(gdpPercap))
+ncol(gapminder_transformed)
+ncol(gapminder)
+gapminder_transformed %>% 
+  select(gdpPercap, gdp_logged)
+hist(gapminder_transformed$gdp_logged)
 

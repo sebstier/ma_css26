@@ -1,13 +1,14 @@
 [
   {
+    "listing": "/material.html",
+    "items": []
+  },
+  {
     "listing": "/slides.html",
     "items": [
       "/slides/01_introduction.html",
-      "/slides/02_css_dbd.html"
+      "/slides/02_css_dbd.html",
+      "/slides/03_ai_in_research.html"
     ]
-  },
-  {
-    "listing": "/material.html",
-    "items": []
   }
 ]
