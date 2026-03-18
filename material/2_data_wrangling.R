@@ -67,32 +67,43 @@ df_trump <- df_trump %>%
                                  "Twitter for iPhone" ~ "iPhone",
                                  .default = "Other"))
 df_trump %>% count(device_rec, device)
+df_trump %>% count(device_rec)
 
 # Some basic text operations ----
 
-# Calculate the occurance of the words "crazy" or "fake" across devices
-# hint: use ?str_detect
-df_trump
-
 # Some tests
 test_vec <- c("fakenews", "fake", "FAKE", "FakE", "FAKENEWS", "gesetz", "wahl", "bundestagswahl")
-tolower(test_vec)
+test_vec_lowered <- tolower(test_vec)
 toupper(test_vec)
 str_detect(test_vec, "fake")
+str_detect(test_vec_lowered, "fake")
 
+#  Create a subset of the data frame with tweets that contain "crazy" (or "fake" across devices)
+# hint: use ?str_detect
+nrow(df_trump)
+df_trump_crazy <- df_trump %>% 
+  filter(str_detect(tolower(text), "crazy|fake"))
 
 # Data visualization using gapminder data ----
 library(ggplot2) # ggplot2 is part of the tidyverse and should already be loaded
 library(gapminder)
 
 # Create a scatter plot of lifeExp and gdpPercap
+gapminder %>% 
+  ggplot(aes(x = lifeExp, y = gdpPercap, size = pop, color = continent)) +
+  geom_point() +
+  scale_y_log10() +
+  labs(x = "Life expectancy", y = "GDP per capita (logged)") +
+  theme_minimal() +
+  theme(legend.position = "bottom")
 
 # Save the plot
+ggsave(filename = "plots/lifeExp_gdpPercap.png", dpi = 800, height = 6, width = 10,
+       bg = "white")
 
 # Create a bar chart showing the GDP/Capita of European countries in the year 2007
 
 
-# TODO HOMEWORK  
 # Calculate the (worldwide) average GDP per capita per year and plot this as a bar chart
 # Sum the total world population per year. Plot the results in a bar chart for the years 1992-2007
 case_match()
@@ -102,7 +113,7 @@ case_match()
 # Calculate the share of tweets per device that contain either "crazy" or "fake"
 
 
-# Create a subset of the data that contains the tweets with either "crazy" or "fake"
+# Use the subset of the data that contains the tweets with either "crazy" or "fake" (created above)
 
 
 # Add the variables to the data frame

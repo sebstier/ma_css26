@@ -238,39 +238,172 @@
     "text": "References"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Computational Social Science Methods and Digital Behavioral Data",
+    "objectID": "slides/05_platforms_apis.html#section",
+    "href": "slides/05_platforms_apis.html#section",
+    "title": "Online Platforms and Platform Data Collection",
     "section": "",
-    "text": "Lecturer\nSebastian Stier\nProfessor @ University of Mannheim & Scientific Director Department Computational Social Science @ GESIS\n\nAbout the course\nComputational Social Science (CSS) is a young research field at the intersection of various social science disciplines, data science and computer science. The goal is to gain new insights into society through large amounts of data and the direct observation of human behavior. CSS relies on two cornerstones: digital behavioral data, which can be collected from online platforms or sensors like smartphones, and computer science methods such as automated text analysis to create appropriate measures for social science research questions. In the course, students will get to know foundational studies, theories and methods used in the field of CSS. We will discuss infrastructural, ethical and legal challenges and how to navigate these to devise appropriate research designs in CSS.\nThe course will be application oriented. Students will familiarize themselves with the main applications of CSS methods and implement them in R. The range of applications will cover data management and preprocessing, the application of machine learning, data and results visualization, statistical data analysis and the validation of results. The hands-on application examples will cover questions from various research fields and different data types like social media data or web browsing histories. Equipped with this theoretical and methodological toolkit, students will develop their own CSS research projects.\nSchedule\n\n\n\n\n\n  \n    \n    \n    \n  \n  \n    \n      Seminar dates and topics\n    \n    \n    \n      Date\n      Topics\n      Required reading\n    \n  \n  \n    11 February 2026\n\nIntroduction and expectations\nFoundations of CSS\nGetting started in R\n\n\n\n    18 February 2026\n\nFoundations of CSS\nWhat is digital behavioral data\nThe R tidyverse\n\n\nLazer, D., & Radford, J. (2017). Data ex Machina: Introduction to Big Data. Annual Review of Sociology, 43(1), 19–39. \nWagner, C., Stier, S., & Zens, M. (2025). What is Digital Behavioral Data? GESIS Guides to Digital Behavioral Data, 1.\n    25 February 2026\n\nUsing AI in academic research\nData wrangling\n\n\nDash, A., Das, S., Kirsten, E., Wu, Q., Karnam, S. K., Gummadi, K. P., Holz, T., Zafar, M. B., & Zannettou, S. (2026). The Algorithmic Self-Portrait: Deconstructing Memory in ChatGPT. arXiv.  \nUniversity of Mannheim (2023). ChatGPT im Studium. AI-generated English translation.\n    4 March 2026\n\nResearch ethics in CSS\nSocial media, web data and web scraping\nData visualization\nFirst text analysis steps\nAPIs and web data collection\n\n\nFiesler, C., & Proferes, N. (2018). ‘Participant’ Perceptions of Twitter Research Ethics. Social Media + Society, 4(1). \nFreelon, D. (2018). Computational Research in the Post-API Age. Political Communication, 35(4), 665–668.\n    18 March 2026\n\nLarge online platforms and platform regulation\nDigital Services Act\nAPIs and web data collection, continued\n\n\nBak-Coleman, J., O’Connor, C., Bergstrom, C., & West, J. (2025). The Risks of Industry Influence in Tech Research. arXiv. \nPierri, F., Araujo, T., Kruikemeier, S., Lorenz-Spreen, P., Abeele, M. M. P. V., Vandenbosch, L., Gonçalves-Sa, J., & Grabowicz, P. A. (2025). Research Opportunities and Challenges of the EU’s Digital Services Act. arXiv.\n    25 March 2026\n\nUser-centered data collections\nLinking surveys and digital behavioral data\nData donations\n\n\nMangold, F., & Stier, S. (2025). Overview of Working with Web Tracking Data. GESIS Guides to Digital Behavioral Data, 23. \nSilber, H., et al. Linking Surveys and Digital Trace Data: Insights From two Studies on Determinants of Data Sharing Behaviour. Journal of the Royal Statistical Society Series A: Statistics in Society, 185(S2), S387–S407.\n    15 April 2026\n\nIntroduction to automated text analysis\nSupervised and unsupervised models\nValidation of model results\n\n\nSchwemmer, C., & Wieczorek, O. (2020). The Methodological Divide of Sociology: Evidence from Two Decades of Journal Publications. Sociology, 54(1), 3–21. \nStuhler, O., Ton, C. D., & Ollion, E. (2025). From Codebooks to Promptbooks: Extracting Information from Text with Generative Large Language Models. Sociological Methods & Research, 54(3), 794–848.\n    22 April 2026\n\nLarge Language Models\n\n\nGilardi, F., Alizadeh, M., & Kubli, M. (2023). ChatGPT outperforms crowd workers for text-annotation tasks. PNAS, 120(30).  \nReiss, M. V. (2023). Testing the Reliability of ChatGPT for Text Annotation and Classification: A Cautionary Remark. arXiv Preprint.\n    29 April 2026\n\nData quality in CSS\nNetwork analysis\n\n\nJungherr, A. (2018). Normalizing digital trace data. In N. J. Stroud & S. C. McGregor (Eds.), Digital Discussions: How Big Data Informs Political Communication (pp. 9–35). New York: Routledge. \nSen, I., Flöck, F., Weller, K., Weiß, B., & Wagner, C. (2021). A Total Error Framework for Digital Traces of Human Behavior on Online Platforms. Public Opinion Quarterly, 85(S1), 399–422.\n    6 May 2026\n\nOpen science and reproducibility in CSS\n\n\nChan, C.- Hong, Schatto-Eckrodt, T., & Gruber, J. (2024). What makes computational communication science (ir)reproducible? Computational Communication Research, 6(1). \nNyhan, B., Settle, J., Thorson, E., Wojcieszak, M., Barberá, P., et al. (2023). Like-minded sources on Facebook are prevalent but not polarizing. Nature, 620(7972), 137–144.\n    13 May 2026\n\nWriting reproducible research papers in R\nquarto, OSF, pipelines and workflows\n\n\nBauer, P. C., & Landesvatter, C. (2023). Writing a reproducible paper with RStudio and Quarto. OSF Preprint.\n    20 May 2026\n\nPresentations of thesis ideas\nCoding: troubleshooting\n\n\n\n    27 May 2026\n\nPresentations of thesis ideas\nCoding: troubleshooting\n\n\n\n  \n  \n  \n\n\n\n\nSoftware\n\nR\nA text editor, e.g. RStudio\nQuarto"
+    "text": "Seminar dates and topics\n    \n    \n    \n      Date\n      Topics\n      Required reading\n    \n  \n  \n    11 February 2026\n\nIntroduction and expectations\nFoundations of CSS\nGetting started in R\n\n\n\n    18 February 2026\n\nFoundations of CSS\nWhat is digital behavioral data\nThe R tidyverse\n\n\nLazer, D., & Radford, J. (2017). Data ex Machina: Introduction to Big Data. Annual Review of Sociology, 43(1), 19–39. \nWagner, C., Stier, S., & Zens, M. (2025). What is Digital Behavioral Data? GESIS Guides to Digital Behavioral Data, 1.\n    25 February 2026\n\nUsing AI in academic research\nData wrangling\n\n\nDash, A., Das, S., Kirsten, E., Wu, Q., Karnam, S. K., Gummadi, K. P., Holz, T., Zafar, M. B., & Zannettou, S. (2026). The Algorithmic Self-Portrait: Deconstructing Memory in ChatGPT. arXiv.  \nUniversity of Mannheim (2023). ChatGPT im Studium. AI-generated English translation.\n    4 March 2026\n\nResearch ethics in CSS\nSocial media, web data and web scraping\nData visualization\n\n\nFiesler, C., & Proferes, N. (2018). ‘Participant’ Perceptions of Twitter Research Ethics. Social Media + Society, 4(1). \nFreelon, D. (2018). Computational Research in the Post-API Age. Political Communication, 35(4), 665–668.\n    18 March 2026\n\nLarge online platforms and platform regulation\nDigital Services Act\nFirst text analysis steps\nAPIs and web data collection\n\n\nBak-Coleman, J., O’Connor, C., Bergstrom, C., & West, J. (2025). The Risks of Industry Influence in Tech Research. arXiv. \nPierri, F., Araujo, T., Kruikemeier, S., Lorenz-Spreen, P., Abeele, M. M. P. V., Vandenbosch, L., Gonçalves-Sa, J., & Grabowicz, P. A. (2025). Research Opportunities and Challenges of the EU’s Digital Services Act. arXiv.\n    25 March 2026\n\nUser-centered data collections\nLinking surveys and digital behavioral data\nData donations\nText analysis in R\n\n\nMangold, F., & Stier, S. (2025). Overview of Working with Web Tracking Data. GESIS Guides to Digital Behavioral Data, 23. \nSilber, H., et al. Linking Surveys and Digital Trace Data: Insights From two Studies on Determinants of Data Sharing Behaviour. Journal of the Royal Statistical Society Series A: Statistics in Society, 185(S2), S387–S407.\n    15 April 2026\n\nIntroduction to automated text analysis\nSupervised and unsupervised models\nValidation of model results\n\n\nSchwemmer, C., & Wieczorek, O. (2020). The Methodological Divide of Sociology: Evidence from Two Decades of Journal Publications. Sociology, 54(1), 3–21. \nStuhler, O., Ton, C. D., & Ollion, E. (2025). From Codebooks to Promptbooks: Extracting Information from Text with Generative Large Language Models. Sociological Methods & Research, 54(3), 794–848."
   },
   {
-    "objectID": "slides.html",
-    "href": "slides.html",
-    "title": "Computational Social Science and Digital Behavioral Data",
-    "section": "",
-    "text": "Date\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nFeb 11, 2026\n\n\nIntroduction\n\n\nSebastian Stier\n\n\n\n\nFeb 18, 2026\n\n\nFoundations of Computational Social Science\n\n\nSebastian Stier\n\n\n\n\nFeb 25, 2026\n\n\nUsing AI in Research\n\n\nSebastian Stier\n\n\n\n\nMar 4, 2026\n\n\nResearch Ethics in CSS and Web Data Collection\n\n\nSebastian Stier\n\n\n\n\n\nNo matching items"
+    "objectID": "slides/05_platforms_apis.html#agenda-for-today",
+    "href": "slides/05_platforms_apis.html#agenda-for-today",
+    "title": "Online Platforms and Platform Data Collection",
+    "section": "Agenda for today",
+    "text": "Agenda for today\n\nR session with a focus on text processing and data visualization\nLarge online platforms and platform regulation\nIntroduction to web data collection and APIs"
   },
   {
-    "objectID": "slides.html#slides",
-    "href": "slides.html#slides",
-    "title": "Computational Social Science and Digital Behavioral Data",
-    "section": "",
-    "text": "Date\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nFeb 11, 2026\n\n\nIntroduction\n\n\nSebastian Stier\n\n\n\n\nFeb 18, 2026\n\n\nFoundations of Computational Social Science\n\n\nSebastian Stier\n\n\n\n\nFeb 25, 2026\n\n\nUsing AI in Research\n\n\nSebastian Stier\n\n\n\n\nMar 4, 2026\n\n\nResearch Ethics in CSS and Web Data Collection\n\n\nSebastian Stier\n\n\n\n\n\nNo matching items"
+    "objectID": "slides/05_platforms_apis.html#introduction-to-ggplot2",
+    "href": "slides/05_platforms_apis.html#introduction-to-ggplot2",
+    "title": "Online Platforms and Platform Data Collection",
+    "section": "Introduction to ggplot2",
+    "text": "Introduction to ggplot2\n\n\n\n\nhttps://stulp.gmw.rug.nl/dataviz/ggplottheory.html\n\n\n\nggplot2 follows the “grammar of graphics”\nCheatsheet with the most relevant functions\nExtensions to ggplot2 that others built"
+  },
+  {
+    "objectID": "slides/05_platforms_apis.html#a-ggplot-figure",
+    "href": "slides/05_platforms_apis.html#a-ggplot-figure",
+    "title": "Online Platforms and Platform Data Collection",
+    "section": "A ggplot figure",
+    "text": "A ggplot figure\n\n\n\n```{r}\n#| output-location: column\n#| code-line-numbers: \"6|7|8|9|10\"\n\nlibrary(ggplot2)\nmtcars %&gt;%\n  ggplot(aes(x = disp, y = mpg)) +\n  geom_point() +\n  geom_smooth(method = \"loess\", formula = \"y ~ x\") +\n  theme_minimal()\n```"
+  },
+  {
+    "objectID": "slides/05_platforms_apis.html#lets-start-coding",
+    "href": "slides/05_platforms_apis.html#lets-start-coding",
+    "title": "Online Platforms and Platform Data Collection",
+    "section": "Let’s start coding",
+    "text": "Let’s start coding\n\nGo back to file 2_data_wrangling.R from https://sebastianstier.com/ma_css26/material.html"
+  },
+  {
+    "objectID": "slides/05_platforms_apis.html#our-two-required-readings",
+    "href": "slides/05_platforms_apis.html#our-two-required-readings",
+    "title": "Online Platforms and Platform Data Collection",
+    "section": "Our two required readings",
+    "text": "Our two required readings\n\n\n\n\nPierri, F., Araujo, T., Kruikemeier, S., Lorenz-Spreen, P., Abeele, M. M. P. V., Vandenbosch, L., Gonçalves-Sa, J., & Grabowicz, P. A. (2025). Research Opportunities and Challenges of the EU’s Digital Services Act. arXiv.\n\n\n\n\nBak-Coleman, J., O’Connor, C., Bergstrom, C., & West, J. (2025). The Risks of Industry Influence in Tech Research. arXiv."
+  },
+  {
+    "objectID": "slides/05_platforms_apis.html#think-pair-share",
+    "href": "slides/05_platforms_apis.html#think-pair-share",
+    "title": "Online Platforms and Platform Data Collection",
+    "section": "Think-pair-share",
+    "text": "Think-pair-share\n\nDiscuss the literature for today with your neighbor (5 min).\nWhat are the current data access challenges and what solutions does the Digital Services Act (DSA) promise? What are potential obstacles to the DSA’s implementation?\nShare and discuss your results with the full class."
+  },
+  {
+    "objectID": "slides/05_platforms_apis.html#the-big-picture-researcher-access-to-online-platform-data",
+    "href": "slides/05_platforms_apis.html#the-big-picture-researcher-access-to-online-platform-data",
+    "title": "Online Platforms and Platform Data Collection",
+    "section": "The big picture: Researcher access to online platform data",
+    "text": "The big picture: Researcher access to online platform data\n\n\n\n\nOnline platforms are becoming increasingly important for society and democracy (Poell, Nieborg, and Van Dijck 2019)\nResearchers need access to high-quality data for robust empirical evidence\nAPI-based access to data for scientific research has been restricted by platforms in recent years\nSolutions for data archiving and secondary data use are needed to enhance transparency and reproducibility\n\n\n\n\n\nhttps://aoir.org/facebook-shuts-the-gate-after-the-horse-has-bolted https://www.theguardian.com/technology/2023/feb/07/techscape-elon-musk-twitter-api https://foundation.mozilla.org/en/campaigns/crowdtangle-petition"
+  },
+  {
+    "objectID": "slides/05_platforms_apis.html#what-are-online-platforms",
+    "href": "slides/05_platforms_apis.html#what-are-online-platforms",
+    "title": "Online Platforms and Platform Data Collection",
+    "section": "What are online platforms?",
+    "text": "What are online platforms?\nVarious digital systems that facilitate interactions, transactions, or information exchange via the Internet.\nThis includes, but is not limited to, social media, search engines, shopping portals, AI chatbots."
+  },
+  {
+    "objectID": "slides/05_platforms_apis.html#different-eras-of-data-access",
+    "href": "slides/05_platforms_apis.html#different-eras-of-data-access",
+    "title": "Online Platforms and Platform Data Collection",
+    "section": "Different eras of data access",
+    "text": "Different eras of data access\n\n\nMimizuka, K., Brown, M. A., Yang, K.-C., & Lukito, J. (2025). Post-Post-API Age: Studying Digital Platforms in Scant Data Access Times. arXiv"
+  },
+  {
+    "objectID": "slides/05_platforms_apis.html#the-eus-digital-services-act-dsa",
+    "href": "slides/05_platforms_apis.html#the-eus-digital-services-act-dsa",
+    "title": "Online Platforms and Platform Data Collection",
+    "section": "The EU’s Digital Services Act (DSA)",
+    "text": "The EU’s Digital Services Act (DSA)\n\n\n\nEU regulation for providers of Very Large Online Platforms (VLOPs) and Very Large Online Search Engines (VLOSEs)\n\nLiability and transparency obligations for platforms, with a particular focus on independent auditing\n\nProvisions regulating data access for researchers studying systemic risks in the EU\n\nNon-public data: Art. 40(4) DSA\n\nPublic data: Art. 40(12) DSA\n\n\n\n\n\n\nhttps://commission.europa.eu/strategy-and-policy/priorities-2019-2024/europe-fit-digital-age/digital-services-act_en"
+  },
+  {
+    "objectID": "slides/05_platforms_apis.html#non-public-platform-data",
+    "href": "slides/05_platforms_apis.html#non-public-platform-data",
+    "title": "Online Platforms and Platform Data Collection",
+    "section": "Non-public platform data",
+    "text": "Non-public platform data\n\n\n\n\nPublic data capture the behavior of only the 15–20% of platform users who create public content (Oswald et al. 2025)\nPlatform use is highly individualized and shaped by algorithmic content curation\nNon-public platform data are needed to generate insights into platforms’ individual and societal effects\n\n\n\n\n\nOswald, L., Schulz, W., Hertwig, R., Lazer, D., & Stier, S. (2025). The Tip of the Iceberg: How the Social Media Production-Consumption Gap Distorts Public Opinion for Citizens and Researchers. SocArXiv."
+  },
+  {
+    "objectID": "slides/05_platforms_apis.html#very-large-online-platforms-and-search-engines",
+    "href": "slides/05_platforms_apis.html#very-large-online-platforms-and-search-engines",
+    "title": "Online Platforms and Platform Data Collection",
+    "section": "Very Large Online Platforms and Search Engines",
+    "text": "Very Large Online Platforms and Search Engines\n\n\n\n\n\n\n\n\nVLOPs and VLOPSEs under the Digital Services Act\n\n\nPlatform\nEU Country\nMonthly Active Users in EU (Mio.)\n\n\n\n\nAliExpress\nNetherlands\n100.0\n\n\nAmazon Store\nLuxembourg\n181.0\n\n\nApple App Store\nIreland\n123.0\n\n\nAylo Freesites (Pornhub)\nCyprus\n45.0\n\n\nBooking.com\nNetherlands\n45.0\n\n\nGoogle Play\nIreland\n284.6\n\n\nGoogle Maps\nIreland\n275.6\n\n\nGoogle Shopping\nIreland\n70.8\n\n\nYouTube\nIreland\n416.6\n\n\nShein\nIreland\n108.0\n\n\nLinkedIn\nIreland\n177.7\n\n\nMeta (Facebook)\nIreland\n259.0\n\n\nMeta (Instagram)\nIreland\n259.0\n\n\nPinterest Europe\nIreland\n124.0\n\n\nSnapchat\nNetherlands\n102.0\n\n\nTikTok\nIreland\n135.9\n\n\nX (Twitter)\nIreland\n115.1\n\n\nTemu\nIreland\n75.0\n\n\nXVideos\nCzech Republic\n160.0\n\n\nWikipedia\nUSA\n151.1\n\n\nZalando\nGermany\n74.5\n\n\nXNXX\nCzech Republic\n45.0\n\n\nGoogle Search\nIreland\n364.0\n\n\nBing\nIreland\n119.0"
+  },
+  {
+    "objectID": "slides/05_platforms_apis.html#does-the-digital-services-act-help-students",
+    "href": "slides/05_platforms_apis.html#does-the-digital-services-act-help-students",
+    "title": "Online Platforms and Platform Data Collection",
+    "section": "Does the Digital Services Act help students?",
+    "text": "Does the Digital Services Act help students?\n\n\n\nMaybe:\n\n\n\n\n\n\n\nDigital Services Act Article 40(8)\n\n\n“Vetted researchers” need to be “affiliated to a research organisation as defined in Article 2, point (1), of Directive (EU) 2019/790”, be “independent from commercial interests”, and “their application discloses the funding of the research.”\nBut researchers also need to demonstrate that “they are capable of fulfilling the specific data security and confidentiality requirements corresponding to each request and to protect personal data, and they describe in their request the appropriate technical and organisational measures that they have put in place to this end.”\n\n\n\n\n\n\n\n\nMimizuka, K., Brown, M. A., Yang, K.-C., & Lukito, J. (2025). Post-Post-API Age: Studying Digital Platforms in Scant Data Access Times. arXiv"
+  },
+  {
+    "objectID": "slides/05_platforms_apis.html#how-to-collect-web-data",
+    "href": "slides/05_platforms_apis.html#how-to-collect-web-data",
+    "title": "Online Platforms and Platform Data Collection",
+    "section": "How to collect web data",
+    "text": "How to collect web data\n\n\nApplication Programming Interfaces (APIs)\n\n\nhttps://ninetailed.io/blog/api-calls/\n\n\n\nWeb scraping\n\n\nhttps://www.faz.net/aktuell/politik/inland/bayern-muenchen-will-kita-foerderung-umstellen-19549912.html"
+  },
+  {
+    "objectID": "slides/05_platforms_apis.html#how-does-it-look-like-in-r",
+    "href": "slides/05_platforms_apis.html#how-does-it-look-like-in-r",
+    "title": "Online Platforms and Platform Data Collection",
+    "section": "How does it look like in R?",
+    "text": "How does it look like in R?\n\n\nAPIs\n\nlibrary(academictwitteR)\ntweets &lt;- get_all_tweets(\n    query = \"#BlackLivesMatter\",\n    start_tweets = \"2020-01-01T00:00:00Z\",\n    end_tweets = \"2020-01-05T00:00:00Z\",\n    file = \"blmtweets\"\n  )\n\n\n\nWeb scraping\n\nlibrary(rvest)\nurl &lt;- \"https://rvest.tidyverse.org/articles/starwars.html\"\nhtml &lt;- read_html(url)\n\nsection &lt;- html |&gt; html_elements(\"section\")\nhead(section, 5)\n\n{xml_nodeset (5)}\n[1] &lt;section&gt;&lt;h2 data-id=\"1\"&gt;\\nThe Phantom Menace\\n&lt;/h2&gt;\\n&lt;p&gt;\\nReleased: 1999 ...\n[2] &lt;section&gt;&lt;h2 data-id=\"2\"&gt;\\nAttack of the Clones\\n&lt;/h2&gt;\\n&lt;p&gt;\\nReleased: 20 ...\n[3] &lt;section&gt;&lt;h2 data-id=\"3\"&gt;\\nRevenge of the Sith\\n&lt;/h2&gt;\\n&lt;p&gt;\\nReleased: 200 ...\n[4] &lt;section&gt;&lt;h2 data-id=\"4\"&gt;\\nA New Hope\\n&lt;/h2&gt;\\n&lt;p&gt;\\nReleased: 1977-05-25\\n ...\n[5] &lt;section&gt;&lt;h2 data-id=\"5\"&gt;\\nThe Empire Strikes Back\\n&lt;/h2&gt;\\n&lt;p&gt;\\nReleased: ..."
+  },
+  {
+    "objectID": "slides/05_platforms_apis.html#how-to-still-collect-web-data",
+    "href": "slides/05_platforms_apis.html#how-to-still-collect-web-data",
+    "title": "Online Platforms and Platform Data Collection",
+    "section": "How to (still) collect web data",
+    "text": "How to (still) collect web data\n\n\n\n\nhttps://paulcbauer.github.io/apis_for_social_scientists_a_review/\n\n\n\n\nhttp://www.r-datacollection.com"
+  },
+  {
+    "objectID": "slides/05_platforms_apis.html#homework",
+    "href": "slides/05_platforms_apis.html#homework",
+    "title": "Online Platforms and Platform Data Collection",
+    "section": "Homework",
+    "text": "Homework\nBrowse through Bauer et al. and explore the options for collecting DBD. If you find the time, try a few of the proposed APIs and code snippets.\n\nhttps://bookdown.org/paul/apis_for_social_scientists/\n\n\n\nWhich APIs did you try out?\nWhich APIs/code still work?\nDid the data help shape your research ideas?"
+  },
+  {
+    "objectID": "slides/05_platforms_apis.html#references",
+    "href": "slides/05_platforms_apis.html#references",
+    "title": "Online Platforms and Platform Data Collection",
+    "section": "References",
+    "text": "References\n\n\n\n\nOswald, Lisa, Will Schulz, Ralph Hertwig, David Lazer, and Sebastian Stier. 2025. “The Tip of the Iceberg: How the Social Media Production-Consumption Gap Distorts Public Opinion for Citizens and Researchers.” SocArXiv. https://doi.org/10.31235/osf.io/frcv5_v1.\n\n\nPoell, Thomas, David Nieborg, and José Van Dijck. 2019. “Platformisation.” Internet Policy Review 8 (4). https://doi.org/10.14763/2019.4.1425."
   },
   {
     "objectID": "material.html",
     "href": "material.html",
     "title": "Computational Social Science and Digital Behavioral Data",
     "section": "",
-    "text": "File Name\n\n\nModified\n\n\n\n\n\n\n0_basics.R\n\n\n2/18/26, 9:50:37 AM\n\n\n\n\n1_tidyverse.R\n\n\n2/25/26, 9:18:40 AM\n\n\n\n\n2_data_wrangling.R\n\n\n3/4/26, 9:56:54 AM\n\n\n\n\n\nNo matching items"
+    "text": "File Name\n\n\nModified\n\n\n\n\n\n\n0_basics.R\n\n\n2/18/26, 9:50:37 AM\n\n\n\n\n1_tidyverse.R\n\n\n2/25/26, 9:18:40 AM\n\n\n\n\n2_data_wrangling.R\n\n\n3/18/26, 9:18:27 AM\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "material.html#material-for-sessions",
     "href": "material.html#material-for-sessions",
     "title": "Computational Social Science and Digital Behavioral Data",
     "section": "",
-    "text": "File Name\n\n\nModified\n\n\n\n\n\n\n0_basics.R\n\n\n2/18/26, 9:50:37 AM\n\n\n\n\n1_tidyverse.R\n\n\n2/25/26, 9:18:40 AM\n\n\n\n\n2_data_wrangling.R\n\n\n3/4/26, 9:56:54 AM\n\n\n\n\n\nNo matching items"
+    "text": "File Name\n\n\nModified\n\n\n\n\n\n\n0_basics.R\n\n\n2/18/26, 9:50:37 AM\n\n\n\n\n1_tidyverse.R\n\n\n2/25/26, 9:18:40 AM\n\n\n\n\n2_data_wrangling.R\n\n\n3/18/26, 9:18:27 AM\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "slides.html",
+    "href": "slides.html",
+    "title": "Computational Social Science and Digital Behavioral Data",
+    "section": "",
+    "text": "Date\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nFeb 11, 2026\n\n\nIntroduction\n\n\nSebastian Stier\n\n\n\n\nFeb 18, 2026\n\n\nFoundations of Computational Social Science\n\n\nSebastian Stier\n\n\n\n\nFeb 25, 2026\n\n\nUsing AI in Research\n\n\nSebastian Stier\n\n\n\n\nMar 4, 2026\n\n\nResearch Ethics in CSS and Web Data Collection\n\n\nSebastian Stier\n\n\n\n\nMar 18, 2026\n\n\nOnline Platforms and Platform Data Collection\n\n\nSebastian Stier\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "slides.html#slides",
+    "href": "slides.html#slides",
+    "title": "Computational Social Science and Digital Behavioral Data",
+    "section": "",
+    "text": "Date\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nFeb 11, 2026\n\n\nIntroduction\n\n\nSebastian Stier\n\n\n\n\nFeb 18, 2026\n\n\nFoundations of Computational Social Science\n\n\nSebastian Stier\n\n\n\n\nFeb 25, 2026\n\n\nUsing AI in Research\n\n\nSebastian Stier\n\n\n\n\nMar 4, 2026\n\n\nResearch Ethics in CSS and Web Data Collection\n\n\nSebastian Stier\n\n\n\n\nMar 18, 2026\n\n\nOnline Platforms and Platform Data Collection\n\n\nSebastian Stier\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Computational Social Science Methods and Digital Behavioral Data",
+    "section": "",
+    "text": "Lecturer\nSebastian Stier\nProfessor @ University of Mannheim & Scientific Director Department Computational Social Science @ GESIS\n\nAbout the course\nComputational Social Science (CSS) is a young research field at the intersection of various social science disciplines, data science and computer science. The goal is to gain new insights into society through large amounts of data and the direct observation of human behavior. CSS relies on two cornerstones: digital behavioral data, which can be collected from online platforms or sensors like smartphones, and computer science methods such as automated text analysis to create appropriate measures for social science research questions. In the course, students will get to know foundational studies, theories and methods used in the field of CSS. We will discuss infrastructural, ethical and legal challenges and how to navigate these to devise appropriate research designs in CSS.\nThe course will be application oriented. Students will familiarize themselves with the main applications of CSS methods and implement them in R. The range of applications will cover data management and preprocessing, the application of machine learning, data and results visualization, statistical data analysis and the validation of results. The hands-on application examples will cover questions from various research fields and different data types like social media data or web browsing histories. Equipped with this theoretical and methodological toolkit, students will develop their own CSS research projects.\nSchedule\n\n\n\n\n\n  \n    \n    \n    \n  \n  \n    \n      Seminar dates and topics\n    \n    \n    \n      Date\n      Topics\n      Required reading\n    \n  \n  \n    11 February 2026\n\nIntroduction and expectations\nFoundations of CSS\nGetting started in R\n\n\n\n    18 February 2026\n\nFoundations of CSS\nWhat is digital behavioral data\nThe R tidyverse\n\n\nLazer, D., & Radford, J. (2017). Data ex Machina: Introduction to Big Data. Annual Review of Sociology, 43(1), 19–39. \nWagner, C., Stier, S., & Zens, M. (2025). What is Digital Behavioral Data? GESIS Guides to Digital Behavioral Data, 1.\n    25 February 2026\n\nUsing AI in academic research\nData wrangling\n\n\nDash, A., Das, S., Kirsten, E., Wu, Q., Karnam, S. K., Gummadi, K. P., Holz, T., Zafar, M. B., & Zannettou, S. (2026). The Algorithmic Self-Portrait: Deconstructing Memory in ChatGPT. arXiv.  \nUniversity of Mannheim (2023). ChatGPT im Studium. AI-generated English translation.\n    4 March 2026\n\nResearch ethics in CSS\nSocial media, web data and web scraping\nData visualization\n\n\nFiesler, C., & Proferes, N. (2018). ‘Participant’ Perceptions of Twitter Research Ethics. Social Media + Society, 4(1). \nFreelon, D. (2018). Computational Research in the Post-API Age. Political Communication, 35(4), 665–668.\n    18 March 2026\n\nLarge online platforms and platform regulation\nDigital Services Act\nAPIs and web data collection\nFirst text analysis steps\n\n\nBak-Coleman, J., O’Connor, C., Bergstrom, C., & West, J. (2025). The Risks of Industry Influence in Tech Research. arXiv. \nPierri, F., Araujo, T., Kruikemeier, S., Lorenz-Spreen, P., Abeele, M. M. P. V., Vandenbosch, L., Gonçalves-Sa, J., & Grabowicz, P. A. (2025). Research Opportunities and Challenges of the EU’s Digital Services Act. arXiv.\n    25 March 2026\n\nUser-centered data collections\nLinking surveys and digital behavioral data\nData donations\nText analysis in R\n\n\nMangold, F., & Stier, S. (2025). Overview of Working with Web Tracking Data. GESIS Guides to Digital Behavioral Data, 23. \nSilber, H., et al. Linking Surveys and Digital Trace Data: Insights From two Studies on Determinants of Data Sharing Behaviour. Journal of the Royal Statistical Society Series A: Statistics in Society, 185(S2), S387–S407.\n    15 April 2026\n\nIntroduction to automated text analysis\nSupervised and unsupervised models\nValidation of model results\n\n\nSchwemmer, C., & Wieczorek, O. (2020). The Methodological Divide of Sociology: Evidence from Two Decades of Journal Publications. Sociology, 54(1), 3–21. \nStuhler, O., Ton, C. D., & Ollion, E. (2025). From Codebooks to Promptbooks: Extracting Information from Text with Generative Large Language Models. Sociological Methods & Research, 54(3), 794–848.\n    22 April 2026\n\nLarge Language Models\n\n\nGilardi, F., Alizadeh, M., & Kubli, M. (2023). ChatGPT outperforms crowd workers for text-annotation tasks. PNAS, 120(30).  \nReiss, M. V. (2023). Testing the Reliability of ChatGPT for Text Annotation and Classification: A Cautionary Remark. arXiv Preprint.\n    29 April 2026\n\nData quality in CSS\nNetwork analysis\n\n\nJungherr, A. (2018). Normalizing digital trace data. In N. J. Stroud & S. C. McGregor (Eds.), Digital Discussions: How Big Data Informs Political Communication (pp. 9–35). New York: Routledge. \nSen, I., Flöck, F., Weller, K., Weiß, B., & Wagner, C. (2021). A Total Error Framework for Digital Traces of Human Behavior on Online Platforms. Public Opinion Quarterly, 85(S1), 399–422.\n    6 May 2026\n\nOpen science and reproducibility in CSS\n\n\nChan, C.- Hong, Schatto-Eckrodt, T., & Gruber, J. (2024). What makes computational communication science (ir)reproducible? Computational Communication Research, 6(1). \nNyhan, B., Settle, J., Thorson, E., Wojcieszak, M., Barberá, P., et al. (2023). Like-minded sources on Facebook are prevalent but not polarizing. Nature, 620(7972), 137–144.\n    13 May 2026\n\nWriting reproducible research papers in R\nquarto, OSF, pipelines and workflows\n\n\nBauer, P. C., & Landesvatter, C. (2023). Writing a reproducible paper with RStudio and Quarto. OSF Preprint.\n    20 May 2026\n\nPresentations of thesis ideas\nCoding: troubleshooting\n\n\n\n    27 May 2026\n\nPresentations of thesis ideas\nCoding: troubleshooting\n\n\n\n  \n  \n  \n\n\n\n\nSoftware\n\nR\nA text editor, e.g. RStudio\nQuarto"
   },
   {
     "objectID": "slides/02_css_dbd.html#agenda-for-today",
