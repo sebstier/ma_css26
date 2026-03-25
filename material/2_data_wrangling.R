@@ -102,21 +102,31 @@ ggsave(filename = "plots/lifeExp_gdpPercap.png", dpi = 800, height = 6, width = 
        bg = "white")
 
 # Create a bar chart showing the GDP/Capita of European countries in the year 2007
+gapminder %>% 
+  filter(continent == "Europe" & year == 2007) %>% 
+  mutate(ctry_reordered = fct_reorder(country, gdpPercap)) %>% 
+  ggplot(aes(x = ctry_reordered, y = gdpPercap)) +
+  geom_col() +
+  labs(x = "Country", y = "GDP/Capita") +
+  #theme(axis.text.x = element_text(angle = 45)) +
+  coord_flip() +
+  theme_minimal()
 
+#### HOMEWORK UNTIL 15th of APRIL####
 
 # Calculate the (worldwide) average GDP per capita per year and plot this as a bar chart
 # Sum the total world population per year. Plot the results in a bar chart for the years 1992-2007
-case_match()
+
 
 # Visualizing the Trump tweets dataset ----
 
 # Calculate the share of tweets per device that contain either "crazy" or "fake"
-
+str_detect()
 
 # Use the subset of the data that contains the tweets with either "crazy" or "fake" (created above)
 
 
-# Add the variables to the data frame
+# Add the dummy variable (TRUE/FALSE) whether a tweet contains "crazy" or "fake" to the data frame
 
-# Create a time series plot of the daily share of "crazy" and "fake" over time
+# Create a time series plot of the daily percentage share of all tweets that contain "crazy" and "fake" over time
 

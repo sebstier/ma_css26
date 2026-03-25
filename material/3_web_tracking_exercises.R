@@ -41,18 +41,20 @@ load(filename)
 rm(filename)
 
 # Load the data
+list.files("data")
+load("data/toy_browsing.rda")
+load("data/toy_survey.rda")
+
 # different ways of storing data
 # save() load() #rda
 # write_rds() read_rds() #rds from the tidyverse
 # write_csv read_csv() #csv from the tidyverse 
-list.files("data")
-load("data/toy_browsing.rda")
-load("data/toy_survey.rda")
 
 # Create object df_wt for further analysis
 df_wt <- toy_browsing %>% 
   as_tibble()
 table(df_wt$device)
+glimpse(df_wt)
 
 # Explore the dataset: what is the number of rows, columns, unique persons, 
 # what is the covered date range?
