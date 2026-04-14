@@ -17,6 +17,9 @@ yt_oauth(
   app_id = client_id,
   app_secret = client_secret
 )
+# After you were offline, you have to re-authenticate in a browser using the following command
+# unlink(".httr-oauth")
+# then run the chunk yt_oauth... above again
 
 #check out the functions in 
 #tuber::
@@ -24,8 +27,10 @@ get_stats(video_id = "24UV7imfIRk")
 
 get_video_details(video_id = "24UV7imfIRk")
 
-df_yt <- get_comment_threads(video_id = "24UV7imfIRk", max_results = 20)
-
+df_yt <- get_comment_threads(
+  filter = list(video_id = "24UV7imfIRk"),
+  max_results = 20
+)
 
 # Exercise 1: Explore a toy web tracking and survey dataset ----
 
