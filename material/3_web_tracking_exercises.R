@@ -9,6 +9,7 @@ library(tidyverse)
 library(tuber)
 # If you want to use this, do your API verification here: 
 #https://developers.google.com/youtube/v3/getting-started
+# more precisely get an API key here: https://console.cloud.google.com/apis/credentials
 
 #client_id <- "YOUR-CLIENT-ID"
 #client_secret <- "YOUR-CLIENT-SECRET"
@@ -61,17 +62,19 @@ df_wt <- toy_browsing %>%
 table(df_wt$device)
 glimpse(df_wt)
 
+### HOMEWORK UNTIL 22 April 2026 ####
 # Explore the dataset: what is the number of rows, columns, unique persons, 
 # what is the covered date range?
 
 # Calculate the mean and median number of website visits (number of rows)
 # per device
 
-
 # What is the share of mobile vs. desktop per wave?
 
 
-# Plot a time series of the number of visits per day
+# Plot a time series of the number of website visits per day
+
+### HOMEWORK ENDS ####
 
 
 # Exercise 2: Domain augmentation of the web tracking data ----
@@ -80,11 +83,13 @@ glimpse(df_wt)
 ## Install the R package adaR: https://gesistsa.github.io/adaR/
 library(adaR)
 ## Apply the relevant function from the package to extract domains from URLs
-glimpse(df_wt)
 df_wt <- df_wt %>% 
   mutate(domain = adaR::ada_get_domain(url))
 
 # Rank the domains according to their appearance
+df_wt %>% 
+  count(domain) %>% 
+  arrange(desc(n))
 
 # Inspect whether there are NAs in domain; what can explain the NAs?
 
@@ -122,4 +127,7 @@ unique(c("sebastian", "sebastian", "felix"))
 
 # Some more explorations of our new variables: where outside of news websites does trump occur?
 # most popular trump domains
+
+# Web scraping
+
 

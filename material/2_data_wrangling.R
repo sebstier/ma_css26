@@ -3,7 +3,7 @@
 #' author: "Sebastian Stier"
 #' institute: University of Mannheim & GESIS
 library(tidyverse)
-
+library(gapminder)
 
 # Trump Twitter Archive ----
 
@@ -115,8 +115,24 @@ gapminder %>%
 #### HOMEWORK UNTIL 15th of APRIL####
 
 # Calculate the (worldwide) average GDP per capita per year and plot this as a bar chart
-# Sum the total world population per year. Plot the results in a bar chart for the years 1992-2007
+gapminder %>% 
+  group_by(year) %>% 
+  summarise(avg_gdp = mean(gdpPercap, na.rm = TRUE)) %>% 
+  ggplot(aes(x = year, y = avg_gdp)) +
+  geom_col() 
 
+# Sum the total world population per year. Plot the results in a bar chart for the years 1992-2007
+options(scipen = 11)
+# The scales package allows you to prettify the axis text 
+library(scales)
+scales::
+gapminder %>% 
+  group_by(year) %>% 
+  summarise(sum_pop = sum(pop, na.rm = TRUE)) %>% 
+  #mutate(sum_pop_pretty = scales::comma_format(sum_pop)) %>% 
+  ggplot(aes(x = year, y = sum_pop)) +
+  geom_col() +
+  scale_y_continuous(labels = label_comma())
 
 # Visualizing the Trump tweets dataset ----
 
@@ -128,5 +144,23 @@ str_detect()
 
 # Add the dummy variable (TRUE/FALSE) whether a tweet contains "crazy" or "fake" to the data frame
 
-# Create a time series plot of the daily percentage share of all tweets that contain "crazy" and "fake" over time
 
+# Create a time series plot of the daily percentage share of all tweets that contain "crazy" and "fake" 
+# over time
+df_trump %>% 
+  mutate(crazy_fake = str_detect(tolower(text), "crazy|fake"),
+         day = as.Date(date),
+         #month = month(date)
+         year = year(date)
+         ) %>% 
+  group_by(year) %>% 
+  mutate(share_crazy_fake = sum(crazy_fake) / n()) %>% 
+  # count(share_crazy_fake) %>%
+  # arrange(desc(share_crazy_fake)) %>% 
+  ggplot(aes(x = year, y = share_crazy_fake)) + 
+  #geom_line()
+  geom_point() +
+  geom_smooth() +
+  scale_y_continuous(labels = scales::percent_format())
+  
+# ?POSIXct provides a lot of options for aggregating and formating date
