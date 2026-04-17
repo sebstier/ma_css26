@@ -128,6 +128,85 @@ unique(c("sebastian", "sebastian", "felix"))
 # Some more explorations of our new variables: where outside of news websites does trump occur?
 # most popular trump domains
 
-# Web scraping
+
+# Scrape and parse web data ----
+library(rvest)
+
+# Subset the web tracking data to visits of the politics section of Fox News
+df_fox <- df_wt %>% 
+  as_tibble() %>% 
+  mutate(fox_politics = str_detect(url, "foxnews.com/politics"),
+         foxnews = domain == "foxnews.com") %>% 
+  filter(fox_politics == TRUE)
+nrow(df_fox)
+
+# Create a vector of unique Fox News political URLs
+urls <- unique(df_fox$url)
+nrow(df_fox)
+length(urls)
+
+# Read the HTML from a Fox News URL
+webpage <- read_html(urls[1])
+
+# Extract the headline (<h1> tag)
+headline <- webpage %>%
+  html_node("h1") %>%  # Modify the tag based on the website
+  html_text()
+
+# Extract the body text (<p> tag for paragraphs)
+body <- webpage %>%
+  html_nodes("p") %>%  # Modify the tag based on the website structure
+  html_text() %>%
+  paste(collapse = " ")  # Combine paragraphs into a single text
+
+# Show the results
+headline
+body
+
+# Inspect the output
+cat(body)
+
+# Use a for loop to create a data frame with the scraped results from all Fox News URLs
+
+# create an empty data frame
+df_text <- data.frame()
+for (i in 1:5) {
+  
+  # Read the HTML from the page
+  webpage = read_html(urls[i])
+  
+  # Extract the headline (<h1> tag)
+  headline = webpage %>%
+    html_node("h1") %>%  # Modify the tag based on the website
+    html_text()
+  
+  # Extract the body text (<p> tag for paragraphs)
+  body = webpage %>%
+    html_nodes("p") %>%  # Modify the tag based on the website structure
+    html_text() %>%
+    paste(collapse = " ")  # Combine paragraphs into a single text
+  
+  # Save in data frame
+  df_text = df_text %>% 
+    bind_rows(
+      data.frame(url = urls[i],
+                 headline = headline,
+                 body = body)
+    )
+  
+  Sys.sleep(time = 3)
+  
+}
+
+# Join the htmls with the web tracking data
+df_fox <- df_fox %>% 
+  left_join(df_text, by = "url")
+
+# Clean the text a little bit
+df_fox <- df_text %>% 
+  mutate(body_clean = str_remove(body, "This material may not be published, broadcast, rewritten , or redistributed. ©2025 FOX News Network")
+  )
+df_fox$body[5]
+df_fox$body_clean[5]
 
 
