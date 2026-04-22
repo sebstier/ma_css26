@@ -1,9 +1,5 @@
 [
   {
-    "listing": "/material.html",
-    "items": []
-  },
-  {
     "listing": "/slides.html",
     "items": [
       "/slides/01_introduction.html",
@@ -12,7 +8,12 @@
       "/slides/04_ethics_and_webdata.html",
       "/slides/05_platforms_apis.html",
       "/slides/06_designed_dbd.html",
-      "/slides/07_text_analysis.html"
+      "/slides/07_text_analysis.html",
+      "/slides/08_text_analysis_llms.html"
     ]
+  },
+  {
+    "listing": "/material.html",
+    "items": []
   }
 ]

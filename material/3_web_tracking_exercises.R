@@ -62,19 +62,30 @@ df_wt <- toy_browsing %>%
 table(df_wt$device)
 glimpse(df_wt)
 
-### HOMEWORK UNTIL 22 April 2026 ####
 # Explore the dataset: what is the number of rows, columns, unique persons, 
 # what is the covered date range?
-
-# Calculate the mean and median number of website visits (number of rows)
-# per device
+range(df_wt$timestamp)
+length(unique(df_wt$panelist_id))
+n_distinct(df_wt$panelist_id)
 
 # What is the share of mobile vs. desktop per wave?
-
-
+df_wt %>% 
+  group_by(device, wave) %>% 
+  summarise(n_device = n()) %>% 
+  ungroup() %>% 
+  group_by(wave) %>% 
+  mutate(n_total_wave = sum(n_device),
+         share = n_device/n_total_wave) 
+  
 # Plot a time series of the number of website visits per day
-
-### HOMEWORK ENDS ####
+df_wt %>% 
+  mutate(day = as.Date(timestamp)
+  ) %>% 
+  group_by(day) %>% 
+  count() %>% 
+  ggplot(aes(x = day, y = n)) +
+  geom_point() +
+  geom_smooth()
 
 
 # Exercise 2: Domain augmentation of the web tracking data ----
@@ -82,6 +93,7 @@ glimpse(df_wt)
 # What are the top ten visited domains in the data?
 ## Install the R package adaR: https://gesistsa.github.io/adaR/
 library(adaR)
+#install.packages("adaR")
 ## Apply the relevant function from the package to extract domains from URLs
 df_wt <- df_wt %>% 
   mutate(domain = adaR::ada_get_domain(url))
@@ -89,19 +101,36 @@ df_wt <- df_wt %>%
 # Rank the domains according to their appearance
 df_wt %>% 
   count(domain) %>% 
-  arrange(desc(n))
+  arrange(desc(n)) 
 
 # Inspect whether there are NAs in domain; what can explain the NAs?
-
+table(is.na(df_wt$domain))
+df_wt %>% 
+  filter(is.na(domain))
 
 # Summarize the number of total visits, Google and Facebook visits per person
+df_aggregated <- df_wt %>% 
+  #mutate(google = ifelse(domain == "google.com", 1, 0)) %>% 
+  mutate(google = case_when(domain == "google.com" ~ 1,
+                            .default = 0),
+         facebook = case_when(domain == "facebook.com" ~ 1,
+                            .default = 0)
+         ) %>% 
+  group_by(panelist_id) %>% 
+  summarise(total_visits = n(),
+            google_visits = sum(google),
+            fb_visits = sum(facebook))
 
 # Merge the survey data with the number of total visits, Google visits and Facebook visits 
 # per panelist_id
-
+table(df_wt$panelist_id %in% toy_survey$panelist_id)
+df_merged <- df_aggregated %>% 
+  left_join(toy_survey, by = "panelist_id")
 
 # Plot the relation of Facebook visits and age with a point diagram
-
+df_merged %>% 
+  ggplot(aes(x = age, y = fb_visits)) +
+  geom_point()
 
 
 # Exercise 3: Analysis of news website visits ----
@@ -112,24 +141,40 @@ news_list <- read.csv("https://raw.githubusercontent.com/ercexpo/us-news-domains
 
 # First, check whether there are duplicates in the news data 
 nrow(news_list)
+n_distinct(news_list$domain)
+news_list %>% 
+  filter(duplicated(domain))
 
 # de-duplicate a vector
 unique(c("sebastian", "sebastian", "felix"))
 
 # remove the duplicates
+news_list <- news_list %>% 
+  filter(!duplicated(domain))
+nrow(news_list)
+n_distinct(news_list$domain)
 
 # Finally, join the web tracking data with the news lists
-
+df_wt_news <- df_wt %>% 
+  left_join(news_list, by = "domain") %>% 
+  mutate(news = ifelse(!is.na(type), 1, 0)
+         )
+table(df_wt$type, useNA = "a")
 
 # Identify the web tracking visits whose URL contains "trump"
 ## hint: ?str_detect
-
+df_wt_trump <- df_wt_news %>% 
+  filter(str_detect(tolower(url), "trump"))
 
 # Some more explorations of our new variables: where outside of news websites does trump occur?
 # most popular trump domains
+df_wt_trump %>% 
+  #filter(news == 0) %>% 
+  count(domain) %>% 
+  arrange(desc(n))
 
 
-# Scrape and parse web data ----
+# Exercise 4: Scrape and parse web data ----
 library(rvest)
 
 # Subset the web tracking data to visits of the politics section of Fox News
@@ -194,7 +239,7 @@ for (i in 1:5) {
                  body = body)
     )
   
-  Sys.sleep(time = 3)
+ #Sys.sleep(time = 3)
   
 }
 
@@ -204,9 +249,15 @@ df_fox <- df_fox %>%
 
 # Clean the text a little bit
 df_fox <- df_text %>% 
-  mutate(body_clean = str_remove(body, "This material may not be published, broadcast, rewritten , or redistributed. ©2025 FOX News Network")
+  mutate(body_clean = str_remove(body, "\n        This material may not be published, broadcast, rewritten, or redistributed. ©2026 FOX News Network, LLC. All rights reserved.")
   )
 df_fox$body[5]
 df_fox$body_clean[5]
 
+# We scrape another up-to-date article by the FAZ
+faz = read_html("https://www.faz.net/aktuell/wirtschaft/mehr-wirtschaft/sparpotenzial-gibt-es-zu-viele-krankenkassen-accg-200755354.html")
 
+# Extract the headline (<h1> tag)
+headline = faz %>%
+  html_node("h1") %>%  # Modify the tag based on the website
+  html_text()
