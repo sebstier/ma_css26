@@ -1,5 +1,5 @@
 #' course: "Computational Social Science and Digital Behavioral Data, University of Mannheim"
-#' title: "Web tracking data exercises"
+#' title: "Introduction to automated text analysis"
 #' author: "Sebastian Stier"
 #' institute: University of Mannheim & GESIS
 library(tidyverse)
