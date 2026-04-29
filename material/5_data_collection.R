@@ -10,7 +10,6 @@ library(tidyverse)
 # Set up .Renviron with key and secret
 usethis::edit_r_environ() # Define environment variable in the following format: RTUMBLR_TOKEN=consumer_key;consumer_secret
 
-
 # Line 13 to 90 written by Claude AI
 # Default delay of 3.6s = 1000 calls/hour max
 get_all_posts_tag <- function(tag, max_posts = Inf, delay = 3.6) {
@@ -56,9 +55,9 @@ get_all_posts_tag <- function(tag, max_posts = Inf, delay = 3.6) {
     # --- API call ---
     batch <- tryCatch(
       if (is.null(before_ts)) {
-        Rtumblr::get_posts_tag(tag = "transgender", limit = 20)
+        Rtumblr::get_posts_tag(tag = tag, limit = 20)
       } else {
-        Rtumblr::get_posts_tag(tag = "transgender", limit = 20, before = before_ts)
+        Rtumblr::get_posts_tag(tag = tag, limit = 20, before = before_ts)
       },
       error = function(e) { message("API error: ", e$message); NULL }
     )
