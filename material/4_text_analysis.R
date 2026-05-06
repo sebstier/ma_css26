@@ -3,9 +3,10 @@
 #' author: "Sebastian Stier"
 #' institute: University of Mannheim & GESIS
 library(tidyverse)
+# For more advanced text analysis, we use the package quanteda
+library(quanteda)
 
-
-# Preprocess and prepare text for analysis ----
+# Text preprocessing ----
 
 # Load the tweets from the Trump Twitter Archive
 df_trump <- read_csv("data/tweets_01-08-2021.csv", col_types = "ccllcddTl")
@@ -13,9 +14,6 @@ df_trump <- read_csv("data/tweets_01-08-2021.csv", col_types = "ccllcddTl")
 # Create a variable "day"
 df_trump <- df_trump %>% 
   mutate(day = as.Date(date))
-
-# For more advanced text analysis, install the package quanteda
-library(quanteda)
 
 # Create a corpus of Trump tweets 
 glimpse(df_trump)
@@ -99,4 +97,108 @@ print(dfm_nostop, 500)
 # Show the top features
 topfeatures(dfm_nostop, 50, decreasing = TRUE)
 topfeatures(dfm_nostop, 50, decreasing = FALSE)
+
+
+# Text analysis models ----
+library(quanteda.textmodels)
+library(quanteda.textstats)
+library(quanteda.textplots)
+
+# Do all preprocessing steps in one tidyverse pipe and remove the token "amp"
+dfm_nostop <- df_trump %>% 
+  corpus(text_field = "text", docid_field = "id") %>% 
+  tokens(remove_punct = TRUE, 
+         remove_numbers = TRUE) %>% 
+  tokens_select(pattern = c("amp", stopwords("en"), "RT"), selection = "remove") %>% 
+  dfm()
+
+# Inspect
+topfeatures(dfm_nostop)
+
+# trim the dfm to only words that appear at least 10 times to make modeling more efficient
+dfm_nostop
+dfm_trimmed <- dfm_nostop %>% 
+  dfm_trim(min_termfreq = 100) 
+dfm_trimmed
+
+#* Frequency counts ----
+# inspect all of the features via a data frame
+feature_table <- textstat_frequency(dfm_trimmed) %>% as_tibble()
+feature_table
+nrow(feature_table)
+table(feature_table$feature == "nancy")
+
+# inspect all of the features via a grouped data frame
+feature_table_grouped <- textstat_frequency(dfm_trimmed, groups = device)
+nrow(feature_table_grouped)
+table(feature_table_grouped$feature == "nancy")
+
+
+#* Dictionary analysis ----
+?dictionary
+dict <- dictionary(list(fake = c("fake", "fake news"),
+                        democrats = c("democr*", "nancy"),
+                        republicans = c("repub*", "gop"))
+                   )
+dfm_dict <- dfm_lookup(dfm_nostop, dictionary = dict)
+textstat_frequency(dfm_dict)
+
+# Add a grouping variable and info on the total number of documents
+dfm_dict <- dfm_lookup(dfm_nostop, dictionary = dict, nomatch = "n_unmatched") %>% 
+  dfm_group(device) 
+
+#* Keyness analysis ----
+# We can easily plot differences in word use by group (e.g., parties, gender, etc.)
+dfm_trimmed %>% 
+  dfm_group(groups = isRetweet) %>% 
+  textstat_keyness() %>% 
+  textplot_keyness()
+
+
+# LLM application ----
+library(rollama)
+# You can explore the various functionalities of rollama here:
+# https://jbgruber.github.io/rollama/articles/annotation.html#the-make_query-helper-function
+
+# Example prompt
+# I (on Mac) first have to enter "ollama serve" into the Terminal to locally start the ollama server
+rollama::ping_ollama()
+#?pull_model
+#pull_model() # Defaults to "llama3.1". List of models: https://ollama.com/library
+show_model()
+
+# Example chatbot interaction
+query("Why is the sky blue? Answer with one sentence.")
+
+# Classify multiple text documents. We create a subset of interesting Trump tweets
+df_trump_to_classify = df_trump %>% 
+  slice(80:100) %>% 
+  select(text) # select only the text variable to keep the data frame more readable
+
+# Prepare classification task using make_query
+queries <- make_query(
+  text = df_trump_to_classify$text, 
+  prompt = "Categories: positive, neutral, negative",
+  template = "{prefix}{text}\n{prompt}",
+  system = "Classify the sentiment of these tweets sent by Donald Trump. Answer with just the correct category.",
+  prefix = "Text to classify: "
+)
+
+# Apply the classification (LLM inference)
+df_trump_to_classify$sentiment <- query(queries, screen = FALSE, output = "text")
+
+# Inspect results
+View(df_trump_to_classify)
+
+# Improve query to better handle URLs and repeat classification task
+queries <- make_query(
+  text = df_trump_to_classify$text, 
+  prompt = "Categories: positive, neutral, negative",
+  template = "{prefix}{text}\n{prompt}",
+  system = "Classify the sentiment of these tweets sent by Donald Trump. Answer with just the correct category. If the text contains no meaningful words (e.g., only a URL), return Neutral.",
+  prefix = "Text to classify: "
+)
+df_trump_to_classify$sentiment_refined <- query(queries, screen = FALSE, output = "text")
+View(df_trump_to_classify)
+
 
