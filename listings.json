@@ -1,9 +1,5 @@
 [
   {
-    "listing": "/material.html",
-    "items": []
-  },
-  {
     "listing": "/slides.html",
     "items": [
       "/slides/01_introduction.html",
@@ -14,7 +10,12 @@
       "/slides/06_designed_dbd.html",
       "/slides/07_text_analysis.html",
       "/slides/08_text_analysis_llms.html",
-      "/slides/09_data_quality.html"
+      "/slides/09_data_quality.html",
+      "/slides/10_open_science.html"
     ]
+  },
+  {
+    "listing": "/material.html",
+    "items": []
   }
 ]

@@ -118,7 +118,7 @@ topfeatures(dfm_nostop)
 # trim the dfm to only words that appear at least 10 times to make modeling more efficient
 dfm_nostop
 dfm_trimmed <- dfm_nostop %>% 
-  dfm_trim(min_termfreq = 100) 
+  dfm_trim(min_termfreq = 50) 
 dfm_trimmed
 
 #* Frequency counts ----
@@ -136,7 +136,7 @@ table(feature_table_grouped$feature == "nancy")
 
 #* Dictionary analysis ----
 ?dictionary
-dict <- dictionary(list(fake = c("fake", "fake news"),
+dict <- dictionary(list(fake = c("fake", "cnn"),
                         democrats = c("democr*", "nancy"),
                         republicans = c("repub*", "gop"))
                    )
@@ -144,8 +144,9 @@ dfm_dict <- dfm_lookup(dfm_nostop, dictionary = dict)
 textstat_frequency(dfm_dict)
 
 # Add a grouping variable and info on the total number of documents
-dfm_dict <- dfm_lookup(dfm_nostop, dictionary = dict, nomatch = "n_unmatched") %>% 
-  dfm_group(device) 
+dfm_lookup(dfm_nostop, dictionary = dict, nomatch = "n_unmatched") %>% 
+  dfm_group(isRetweet) 
+textstat_frequency(dfm_dict)
 
 #* Keyness analysis ----
 # We can easily plot differences in word use by group (e.g., parties, gender, etc.)
@@ -161,14 +162,15 @@ library(rollama)
 # https://jbgruber.github.io/rollama/articles/annotation.html#the-make_query-helper-function
 
 # Example prompt
-# I (on Mac) first have to enter "ollama serve" into the Terminal to locally start the ollama server
+# First enter "ollama serve" into the Terminal to locally start the ollama server
 rollama::ping_ollama()
 #?pull_model
 #pull_model() # Defaults to "llama3.1". List of models: https://ollama.com/library
-show_model()
+test <- show_model()
 
 # Example chatbot interaction
 query("Why is the sky blue? Answer with one sentence.")
+query("What is the capital of Germany?")
 
 # Classify multiple text documents. We create a subset of interesting Trump tweets
 df_trump_to_classify = df_trump %>% 
@@ -198,6 +200,7 @@ queries <- make_query(
   system = "Classify the sentiment of these tweets sent by Donald Trump. Answer with just the correct category. If the text contains no meaningful words (e.g., only a URL), return Neutral.",
   prefix = "Text to classify: "
 )
+
 df_trump_to_classify$sentiment_refined <- query(queries, screen = FALSE, output = "text")
 View(df_trump_to_classify)
 

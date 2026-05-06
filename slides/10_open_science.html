@@ -1,0 +1,1425 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="../libs/clipboard/clipboard.min.js"></script>
+<script src="../libs/quarto-html/tabby.min.js"></script>
+<script src="../libs/quarto-html/popper.min.js"></script>
+<script src="../libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../libs/quarto-html/quarto-syntax-highlighting-0626ff4d7a71b55c8707dcae1d04a9b6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.6.39">
+
+  <meta name="author" content="Sebastian Stier">
+  <meta name="dcterms.date" content="2024-05-06">
+  <title>Computational Social Science and Digital Behavioral Data – Open Science and Reproducibility in CSS</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+      margin-bottom: 0em;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
+  <link rel="stylesheet" href="../libs/revealjs/dist/theme/quarto-960426d5708e5b26dd876fdd1b170ff6.css">
+  <link href="../libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Open Science and Reproducibility in CSS</h1>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Sebastian Stier 
+</div>
+        <p class="quarto-title-affiliation">
+            University of Mannheim &amp; GESIS – Leibniz Institute for the Social Sciences
+          </p>
+    </div>
+</div>
+
+  <p class="date">2024-05-06</p>
+</section>
+<section id="agenda-for-today" class="slide level2">
+<h2>Agenda for today</h2>
+<ol type="1">
+<li><p>Large Language Models, continued</p></li>
+<li><p>Applied text analysis in <em>R</em></p></li>
+<li><p>Open science and reproducibility in CSS</p></li>
+</ol>
+</section>
+<section id="section" class="slide level2">
+<h2></h2>
+<div class="cell">
+<div class="cell-output-display">
+<div id="zjlkrrvcza" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#zjlkrrvcza table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#zjlkrrvcza thead, #zjlkrrvcza tbody, #zjlkrrvcza tfoot, #zjlkrrvcza tr, #zjlkrrvcza td, #zjlkrrvcza th {
+  border-style: none;
+}
+
+#zjlkrrvcza p {
+  margin: 0;
+  padding: 0;
+}
+
+#zjlkrrvcza .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 12px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#zjlkrrvcza .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#zjlkrrvcza .gt_title {
+  color: #333333;
+  font-size: 14px;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#zjlkrrvcza .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#zjlkrrvcza .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#zjlkrrvcza .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#zjlkrrvcza .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#zjlkrrvcza .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: bold;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#zjlkrrvcza .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: bold;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#zjlkrrvcza .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#zjlkrrvcza .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#zjlkrrvcza .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#zjlkrrvcza .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#zjlkrrvcza .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#zjlkrrvcza .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#zjlkrrvcza .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#zjlkrrvcza .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#zjlkrrvcza .gt_row {
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#zjlkrrvcza .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zjlkrrvcza .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#zjlkrrvcza .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#zjlkrrvcza .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#zjlkrrvcza .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zjlkrrvcza .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#zjlkrrvcza .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#zjlkrrvcza .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#zjlkrrvcza .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zjlkrrvcza .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#zjlkrrvcza .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#zjlkrrvcza .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#zjlkrrvcza .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#zjlkrrvcza .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#zjlkrrvcza .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zjlkrrvcza .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#zjlkrrvcza .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zjlkrrvcza .gt_left {
+  text-align: left;
+}
+
+#zjlkrrvcza .gt_center {
+  text-align: center;
+}
+
+#zjlkrrvcza .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#zjlkrrvcza .gt_font_normal {
+  font-weight: normal;
+}
+
+#zjlkrrvcza .gt_font_bold {
+  font-weight: bold;
+}
+
+#zjlkrrvcza .gt_font_italic {
+  font-style: italic;
+}
+
+#zjlkrrvcza .gt_super {
+  font-size: 65%;
+}
+
+#zjlkrrvcza .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#zjlkrrvcza .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#zjlkrrvcza .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#zjlkrrvcza .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#zjlkrrvcza .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#zjlkrrvcza .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#zjlkrrvcza .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#zjlkrrvcza .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#zjlkrrvcza div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+<table class="gt_table" style="table-layout:fixed;width:100%;" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <colgroup>
+    <col style="width:20%;">
+    <col style="width:30%;">
+    <col style="width:50%;">
+  </colgroup>
+  <thead>
+    <tr class="gt_heading">
+      <td colspan="3" class="gt_heading gt_title gt_font_normal gt_bottom_border" style=""><span data-qmd-base64="KipTZW1pbmFyIGRhdGVzIGFuZCB0b3BpY3MqKg=="><span class="gt_from_md"><strong>Seminar dates and topics</strong></span></span></td>
+    </tr>
+    
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Date">Date</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Topics">Topics</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Required-reading">Required reading</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="Date" class="gt_row gt_left"><span data-qmd-base64="MTUgQXByaWwgMjAyNg=="><span class="gt_from_md">15 April 2026</span></span></td>
+<td headers="Topics" class="gt_row gt_left"><span data-qmd-base64="LSBJbnRyb2R1Y3Rpb24gdG8gYXV0b21hdGVkIHRleHQgYW5hbHlzaXM6IHN1cGVydmlzZWQgYW5kIHVuc3VwZXJ2aXNlZCBtb2RlbHMNCi0gRGF0YSBqb2luaW5nIG9wZXJhdGlvbnM="><span class="gt_from_md"><ul>
+<li>Introduction to automated text analysis: supervised and unsupervised models</li>
+<li>Data joining operations</li>
+</ul>
+</span></span></td>
+<td headers="Required reading" class="gt_row gt_left"><span data-qmd-base64="U2Nod2VtbWVyLCBDLiwgJiBXaWVjem9yZWssIE8uICgyMDIwKS4gVGhlIE1ldGhvZG9sb2dpY2FsIERpdmlkZSBvZiBTb2Npb2xvZ3k6IEV2aWRlbmNlIGZyb20gVHdvIERlY2FkZXMgb2YgSm91cm5hbCBQdWJsaWNhdGlvbnMuIFsqU29jaW9sb2d5KiwgNTQoMSksIDPigJMyMS5dKGh0dHBzOi8vZG9pLm9yZy8xMC4xMTc3LzAwMzgwMzg1MTk4NTMxNDYpIDxici8+PGJyLz4NClN0dWhsZXIsIE8uLCBUb24sIEMuIEQuLCAmIE9sbGlvbiwgRS4gKDIwMjUpLiBGcm9tIENvZGVib29rcyB0byBQcm9tcHRib29rczogRXh0cmFjdGluZyBJbmZvcm1hdGlvbiBmcm9tIFRleHQgd2l0aCBHZW5lcmF0aXZlIExhcmdlIExhbmd1YWdlIE1vZGVscy4gWypTb2Npb2xvZ2ljYWwgTWV0aG9kcyAmIFJlc2VhcmNoKiwgNTQoMyksIDc5NOKAkzg0OC5dKGh0dHBzOi8vb3NjYXJzdHVobGVyLm9yZy93cC1jb250ZW50L3VwbG9hZHMvMjAyNS8wMy9TdHVobGVyX1Rvbl9PbGxpb25fQXJYaXZfcHJlcHJpbnQucGRmKQ=="><span class="gt_from_md">Schwemmer, C., &amp; Wieczorek, O. (2020). The Methodological Divide of Sociology: Evidence from Two Decades of Journal Publications. <a href="https://doi.org/10.1177/0038038519853146"><em>Sociology</em>, 54(1), 3–21.</a> <br><br>
+Stuhler, O., Ton, C. D., &amp; Ollion, E. (2025). From Codebooks to Promptbooks: Extracting Information from Text with Generative Large Language Models. <a href="https://oscarstuhler.org/wp-content/uploads/2025/03/Stuhler_Ton_Ollion_ArXiv_preprint.pdf"><em>Sociological Methods &amp; Research</em>, 54(3), 794–848.</a></span></span></td></tr>
+    <tr><td headers="Date" class="gt_row gt_left"><span data-qmd-base64="MjIgQXByaWwgMjAyNg=="><span class="gt_from_md">22 April 2026</span></span></td>
+<td headers="Topics" class="gt_row gt_left"><span data-qmd-base64="LSBMYXJnZSBMYW5ndWFnZSBNb2RlbHMNCi0gVGV4dCBhbmFseXNpcyBpbiBSDQo="><span class="gt_from_md"><ul>
+<li>Large Language Models</li>
+<li>Text analysis in R</li>
+</ul>
+</span></span></td>
+<td headers="Required reading" class="gt_row gt_left"><span data-qmd-base64="R2lsYXJkaSwgRi4sIEFsaXphZGVoLCBNLiwgJiBLdWJsaSwgTS4gKDIwMjMpLiBDaGF0R1BUIG91dHBlcmZvcm1zIGNyb3dkIHdvcmtlcnMgZm9yIHRleHQtYW5ub3RhdGlvbiB0YXNrcy4gWypQTkFTKiwgMTIwKDMwKS5dKGh0dHBzOi8vZG9pLm9yZy8xMC4xMDczL3BuYXMuMjMwNTAxNjEyMCkgIDxici8+PGJyLz4NCg0KUmVpc3MsIE0uIFYuICgyMDIzKS4gVGVzdGluZyB0aGUgUmVsaWFiaWxpdHkgb2YgQ2hhdEdQVCBmb3IgVGV4dCBBbm5vdGF0aW9uIGFuZCBDbGFzc2lmaWNhdGlvbjogQSBDYXV0aW9uYXJ5IFJlbWFyay4gWyphclhpdiBQcmVwcmludCouXShodHRwOi8vYXJ4aXYub3JnL2Ficy8yMzA0LjExMDg1KQ=="><span class="gt_from_md">Gilardi, F., Alizadeh, M., &amp; Kubli, M. (2023). ChatGPT outperforms crowd workers for text-annotation tasks. <a href="https://doi.org/10.1073/pnas.2305016120"><em>PNAS</em>, 120(30).</a>  <br><br><p></p>
+<p>Reiss, M. V. (2023). Testing the Reliability of ChatGPT for Text Annotation and Classification: A Cautionary Remark. <a href="http://arxiv.org/abs/2304.11085"><em>arXiv Preprint</em>.</a></p></span></span></td></tr>
+    <tr><td headers="Date" class="gt_row gt_left"><span data-qmd-base64="MjkgQXByaWwgMjAyNg=="><span class="gt_from_md">29 April 2026</span></span></td>
+<td headers="Topics" class="gt_row gt_left"><span data-qmd-base64="LSBEYXRhIHF1YWxpdHkgaW4gQ1NTDQotIFRleHQgYW5hbHlzaXMgaW4gUg=="><span class="gt_from_md"><ul>
+<li>Data quality in CSS</li>
+<li>Text analysis in R</li>
+</ul>
+</span></span></td>
+<td headers="Required reading" class="gt_row gt_left"><span data-qmd-base64="SnVuZ2hlcnIsIEEuICgyMDE4KS4gTm9ybWFsaXppbmcgZGlnaXRhbCB0cmFjZSBkYXRhLiBJbiBOLiBKLiBTdHJvdWQgJiBTLiBDLiBNY0dyZWdvciAoRWRzLiksIFtEaWdpdGFsIERpc2N1c3Npb25zOiBIb3cgQmlnIERhdGEgSW5mb3JtcyBQb2xpdGljYWwgQ29tbXVuaWNhdGlvbiAocHAuIDnigJMzNSkuXShodHRwczovL2FuZHJlYXNqdW5naGVyci5uZXQvd3AtY29udGVudC91cGxvYWRzLzIwMTcvMDUvSnVuZ2hlcnItMjAxNy1Ob3JtYWxpemluZy1EaWdpdGFsLVRyYWNlLURhdGEtUHJlcHJpbnQucGRmKSBOZXcgWW9yazogUm91dGxlZGdlLiA8YnIvPjxici8+DQpTZW4sIEkuLCBGbMO2Y2ssIEYuLCBXZWxsZXIsIEsuLCBXZWnDnywgQi4sICYgV2FnbmVyLCBDLiAoMjAyMSkuIEEgVG90YWwgRXJyb3IgRnJhbWV3b3JrIGZvciBEaWdpdGFsIFRyYWNlcyBvZiBIdW1hbiBCZWhhdmlvciBvbiBPbmxpbmUgUGxhdGZvcm1zLiBbKlB1YmxpYyBPcGluaW9uIFF1YXJ0ZXJseSosIDg1KFMxKSwgMzk54oCTNDIyLl0oaHR0cHM6Ly9kb2kub3JnLzEwLjEwOTMvcG9xL25mYWIwMTgpIA0K"><span class="gt_from_md">Jungherr, A. (2018). Normalizing digital trace data. In N. J. Stroud &amp; S. C. McGregor (Eds.), <a href="https://andreasjungherr.net/wp-content/uploads/2017/05/Jungherr-2017-Normalizing-Digital-Trace-Data-Preprint.pdf">Digital Discussions: How Big Data Informs Political Communication (pp. 9–35).</a> New York: Routledge. <br><br>
+Sen, I., Flöck, F., Weller, K., Weiß, B., &amp; Wagner, C. (2021). A Total Error Framework for Digital Traces of Human Behavior on Online Platforms. <a href="https://doi.org/10.1093/poq/nfab018"><em>Public Opinion Quarterly</em>, 85(S1), 399–422.</a></span></span></td></tr>
+    <tr><td headers="Date" class="gt_row gt_left" style="background-color: rgba(173,216,230,0.8); color: #000000; font-weight: bold;"><span data-qmd-base64="NiBNYXkgMjAyNg=="><span class="gt_from_md">6 May 2026</span></span></td>
+<td headers="Topics" class="gt_row gt_left" style="background-color: rgba(173,216,230,0.8); color: #000000; font-weight: bold;"><span data-qmd-base64="LSBPcGVuIHNjaWVuY2UgYW5kIHJlcHJvZHVjaWJpbGl0eSBpbiBDU1MNCi0gVGV4dCBhbmFseXNpcywgY29udGludWVkDQotIFVzaW5nIExMTXMgaW4gUg=="><span class="gt_from_md"><ul>
+<li>Open science and reproducibility in CSS</li>
+<li>Text analysis, continued</li>
+<li>Using LLMs in R</li>
+</ul>
+</span></span></td>
+<td headers="Required reading" class="gt_row gt_left" style="background-color: rgba(173,216,230,0.8); color: #000000; font-weight: bold;"><span data-qmd-base64="Q2hhbiwgQy4tIEhvbmcsIFNjaGF0dG8tRWNrcm9kdCwgVC4sICYgR3J1YmVyLCBKLiAoMjAyNCkuIFdoYXQgbWFrZXMgY29tcHV0YXRpb25hbCBjb21tdW5pY2F0aW9uIHNjaWVuY2UgKGlyKXJlcHJvZHVjaWJsZT8gWypDb21wdXRhdGlvbmFsIENvbW11bmljYXRpb24gUmVzZWFyY2gqLCA2KDEpLl0oaHR0cHM6Ly9kb2kub3JnLzEwLjUxMTcvQ0NSMjAyNC4xLjUuQ0hBTikgPGJyLz48YnIvPg0KDQpOeWhhbiwgQi4sIFNldHRsZSwgSi4sIFRob3Jzb24sIEUuLCBXb2pjaWVzemFrLCBNLiwgQmFyYmVyw6EsIFAuLCBldCBhbC4gKDIwMjMpLiBMaWtlLW1pbmRlZCBzb3VyY2VzIG9uIEZhY2Vib29rIGFyZSBwcmV2YWxlbnQgYnV0IG5vdCBwb2xhcml6aW5nLiBbKk5hdHVyZSosIDYyMCg3OTcyKSwgMTM34oCTMTQ0Ll0oaHR0cHM6Ly9kb2kub3JnLzEwLjEwMzgvczQxNTg2LTAyMy0wNjI5Ny13KQ=="><span class="gt_from_md">Chan, C.- Hong, Schatto-Eckrodt, T., &amp; Gruber, J. (2024). What makes computational communication science (ir)reproducible? <a href="https://doi.org/10.5117/CCR2024.1.5.CHAN"><em>Computational Communication Research</em>, 6(1).</a> <br><br><p></p>
+<p>Nyhan, B., Settle, J., Thorson, E., Wojcieszak, M., Barberá, P., et al. (2023). Like-minded sources on Facebook are prevalent but not polarizing. <a href="https://doi.org/10.1038/s41586-023-06297-w"><em>Nature</em>, 620(7972), 137–144.</a></p></span></span></td></tr>
+    <tr><td headers="Date" class="gt_row gt_left"><span data-qmd-base64="MTMgTWF5IDIwMjY="><span class="gt_from_md">13 May 2026</span></span></td>
+<td headers="Topics" class="gt_row gt_left"><span data-qmd-base64="LSBXcml0aW5nIHJlcHJvZHVjaWJsZSByZXNlYXJjaCBwYXBlcnMgaW4gUg0KLSBxdWFydG8sIE9TRiwgcGlwZWxpbmVzIGFuZCB3b3JrZmxvd3M="><span class="gt_from_md"><ul>
+<li>Writing reproducible research papers in R</li>
+<li>quarto, OSF, pipelines and workflows</li>
+</ul>
+</span></span></td>
+<td headers="Required reading" class="gt_row gt_left"><span data-qmd-base64="QmF1ZXIsIFAuIEMuLCAmIExhbmRlc3ZhdHRlciwgQy4gKDIwMjMpLiBXcml0aW5nIGEgcmVwcm9kdWNpYmxlIHBhcGVyIHdpdGggUlN0dWRpbyBhbmQgUXVhcnRvLiBbKk9TRiBQcmVwcmludCouXShodHRwczovL2RvaS5vcmcvMTAuMzEyMTkvb3NmLmlvL3VyNHhuKQ=="><span class="gt_from_md">Bauer, P. C., &amp; Landesvatter, C. (2023). Writing a reproducible paper with RStudio and Quarto. <a href="https://doi.org/10.31219/osf.io/ur4xn"><em>OSF Preprint</em>.</a></span></span></td></tr>
+    <tr><td headers="Date" class="gt_row gt_left"><span data-qmd-base64="MjAgTWF5IDIwMjY="><span class="gt_from_md">20 May 2026</span></span></td>
+<td headers="Topics" class="gt_row gt_left"><span data-qmd-base64="LSBQcmVzZW50YXRpb25zIG9mIHRoZXNpcyBpZGVhcw0KLSBDb2Rpbmc6IHRyb3VibGVzaG9vdGluZw=="><span class="gt_from_md"><ul>
+<li>Presentations of thesis ideas</li>
+<li>Coding: troubleshooting</li>
+</ul>
+</span></span></td>
+<td headers="Required reading" class="gt_row gt_left"><span data-qmd-base64="IA=="><span class="gt_from_md"></span></span></td></tr>
+    <tr><td headers="Date" class="gt_row gt_left"><span data-qmd-base64="MjcgTWF5IDIwMjY="><span class="gt_from_md">27 May 2026</span></span></td>
+<td headers="Topics" class="gt_row gt_left"><span data-qmd-base64="LSBQcmVzZW50YXRpb25zIG9mIHRoZXNpcyBpZGVhcw0KLSBDb2Rpbmc6IHRyb3VibGVzaG9vdGluZw=="><span class="gt_from_md"><ul>
+<li>Presentations of thesis ideas</li>
+<li>Coding: troubleshooting</li>
+</ul>
+</span></span></td>
+<td headers="Required reading" class="gt_row gt_left"><span data-qmd-base64="IA=="><span class="gt_from_md"></span></span></td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+</div>
+</div>
+</section>
+<section>
+<section id="large-language-models-continued" class="title-slide slide level1 center" data-background-color="#58748F">
+<h1>1. Large Language Models, continued</h1>
+
+</section>
+<section id="recap-how-do-llms-work" class="slide level2">
+<h2>Recap: How do LLMs work?</h2>
+<div class="fragment">
+<div style="font-size: 90%;">
+<ol type="1">
+<li>An LLM is a system that <strong>can predict the next word</strong> based on previous words. An LLM is a machine that has learned the patterns of language so well that it can generate new text that fits those patterns.</li>
+<li>Computers don’t understand words. The LLM turns a <strong>word into a list of numbers (a vector)</strong> that captures co-occurances.</li>
+<li><strong>Attention</strong>: For every word, the model decides which other words in the sentence are important for understanding it.</li>
+<li>Language models consist of a <strong>neural network</strong> with many parameters (typically billions of weights).</li>
+<li>Trained on <strong>large quantities of unlabeled text using self-supervised learning</strong>.</li>
+</ol>
+</div>
+<div style="font-size: 30%;">
+<p>Jurafsky, D., &amp; Martin, J. H. (2026). Speech and Language Processing: An Introduction to Natural Language Processing, Computational Linguistics, and Speech Recognition, with Language Models (3rd ed.). <a href="https://web.stanford.edu/~jurafsky/slp3">https://web.stanford.edu/~jurafsky/slp3/</a></p>
+</div>
+</div>
+</section>
+<section id="recap-how-do-llms-work-1" class="slide level2">
+<h2>Recap: How do LLMs work?</h2>
+
+<img data-src="../material/img/llms_text.png" class="r-stretch"><div style="font-size: 40%;">
+<p>OpenAI, Achiam, J., Adler, S., Agarwal, S., Ahmad, L., Akkaya, I., Aleman, F. L., Almeida, D., Altenschmidt, J., Altman, S., Anadkat, S., Avila, R., Babuschkin, I., Balaji, S., Balcom, V., Baltescu, P., Bao, H., Bavarian, M., Belgum, J., … Zoph, B. (2024). <a href="https://arxiv.org/abs/2303.08774"><em>GPT-4 Technical Report</em>.</a></p>
+<p>Touvron, H., Lavril, T., Izacard, G., Martinet, X., Lachaux, M.-A., Lacroix, T., Rozière, B., Goyal, N., Hambro, E., Azhar, F., Rodriguez, A., Joulin, A., Grave, E., &amp; Lample, G. (2023). <a href="https://arxiv.org/abs/2302.13971">LLaMA: Open and Efficient Foundation Language Models.</a></p>
+</div>
+</section>
+<section id="visualizations-of-word-embeddings" class="slide level2">
+<h2>Visualizations of word embeddings</h2>
+<p><a href="https://www.vectorvis.com/projector">https://www.vectorvis.com/projector</a></p>
+<p><a href="https://vectors.nlpl.eu/explore/embeddings/en/visual">https://vectors.nlpl.eu/explore/embeddings/en/visual</a></p>
+<p><a href="https://word-embeddings.wbkolleg.unibe.ch">https://word-embeddings.wbkolleg.unibe.ch</a></p>
+</section>
+<section id="this-field-is-evolving-quickly" class="slide level2">
+<h2>This field is evolving <strong>quickly</strong></h2>
+
+<img data-src="../material/img/llm_tree.jpeg" class="quarto-figure quarto-figure-center r-stretch"><div style="font-size: 40%;">
+<p><a href="https://github.com/Mooler0410/LLMsPracticalGuide">https://github.com/Mooler0410/LLMsPracticalGuide</a></p>
+</div>
+</section>
+<section id="how-to-interact-with-llms" class="slide level2">
+<h2>How to interact with LLMs</h2>
+<ul>
+<li><strong>Zero shot learning</strong>: the user writes a natural language instruction (commonly called “prompt”) for the LLM that instructs it to perform a certain task</li>
+<li><strong>Few shot learning</strong>: the user writes a prompt for the LLM that instructs it to perform a certain task + provides some examples</li>
+<li><strong>Instruction tuning</strong>: the user trains a pre-trained model on task-related data. During fine tuning, model parameters are updated. A medium to large amount of labelled training data (i.e., examples that are annotated with the desired model output) is required.</li>
+</ul>
+</section>
+<section id="multimodality-and-multilingual-coverage" class="slide level2">
+<h2>Multimodality and multilingual coverage</h2>
+
+<img data-src="../material/img/llm_inference.png" class="quarto-figure quarto-figure-center r-stretch"><div style="font-size: 40%;">
+<p>Bommasani, R., Hudson, D. A., Adeli, E., Altman, R., Arora, S., Arx, S. von, Bernstein, M. S., Bohg, J., Bosselut, A., Brunskill, E., Brynjolfsson, E., Buch, S., Card, D., Castellon, R., Chatterji, N., Chen, A., Creel, K., Davis, J. Q., Demszky, D., … Liang, P. (2022). On the Opportunities and Risks of Foundation Models (arXiv:2108.07258). <a href="https://doi.org/10.48550/arXiv.2108.07258">arXiv. https://doi.org/10.48550/arXiv.2108.07258</a></p>
+</div>
+</section>
+<section id="how-do-llms-handle-images" class="slide level2">
+<h2>How do LLMs handle images?</h2>
+<div style="font-size: 70%;">
+<ul>
+<li>Scraping web images and their captions</li>
+<li>Extracting image features and comparing the patterns of occurence across images</li>
+<li>Using textual captions as image labels</li>
+</ul>
+</div>
+
+<img data-src="../material/img/dalle2.png" class="r-stretch"><div style="font-size: 40%;">
+<p>Ramesh, A., Dhariwal, P., Nichol, A., Chu, C., &amp; Chen, M. (2022). Hierarchical Text-Conditional Image Generation with CLIP Latents. <a href="https://arxiv.org/abs/2204.06125"><em>OpenAI</em>.</a></p>
+</div>
+</section>
+<section id="dalle-3" class="slide level2">
+<h2><strong>DALL·E 3</strong></h2>
+
+<img data-src="../material/img/dalle3.png" class="r-stretch"><div style="font-size: 40%;">
+<p>Betker, J., Goh, G., Jing, L., Brooks, T., Wang, J., Li, L., Ouyang, L., Zhuang, J., Lee, J., Guo, Y., Manassra, W., Dhariwal, P., Chu, C., &amp; Jiao, Y. (2023). Improving image generation with better captions. <a href="https://cdn.openai.com/papers/dall-e-3.pdf"><em>OpenAI</em>.</a></p>
+</div>
+</section></section>
+<section>
+<section id="applied-text-analysis-in-r" class="title-slide slide level1 center" data-background-color="#58748F">
+<h1>2. Applied text analysis in <em>R</em></h1>
+
+</section>
+<section id="we-will-use-quanteda" class="slide level2">
+<h2>We will use <em>quanteda</em></h2>
+<ul>
+<li>Go to the updated file <strong>4_text_analysis.R</strong> in <a href="https://sebastianstier.com/ma_css26/material.html">https://sebastianstier.com/ma_css26/material.html</a></li>
+</ul>
+</section>
+<section id="homework" class="slide level2">
+<h2>Homework</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Using <em>rollama</em> for calling LLMs from R</strong></p>
+</div>
+<div class="callout-content">
+<p>Install the R package <em>rollama</em>: <a href="https://jbgruber.github.io/rollama/">https://jbgruber.github.io/rollama</a></p>
+<p>We’ll discuss any potential problems next week.</p>
+<p>Play around with some of the LLMs included in <em>rollama.</em></p>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="open-science-and-reproducibility-in-css" class="title-slide slide level1 center" data-background-color="#58748F">
+<h1>3. Open science and reproducibility in CSS</h1>
+
+</section>
+<section id="what-is-reproducibility" class="slide level2">
+<h2>What is reproducibility?</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong><strong>Defining reproducibility</strong></strong></p>
+</div>
+<div class="callout-content">
+<p>A minimum standard on a spectrum of activities (“reproducibility spectrum”) for assessing the value or accuracy of scientific claims <strong>based on the original methods, data, and code</strong>. […] In some fields, this meaning is, instead, associated with the term “replicability” or “repeatability”.</p>
+</div>
+</div>
+</div>
+<div style="font-size: 50%;">
+<p><a href="https://forrt.org/glossary/reproducibility">https://forrt.org/glossary/reproducibility</a></p>
+</div>
+<div class="fragment">
+<p>Reproducibility ensures that research is <strong>transparent, verifiable, and trustworthy</strong>.</p>
+</div>
+</section>
+<section id="motivations-for-reproducibility" class="slide level2">
+<h2>Motivations for reproducibility</h2>
+<ul>
+<li><p>Increasing the robustness and trustworthiness of your own research</p></li>
+<li><p>Facilitating collaboration (through the use of common tools and standards)</p></li>
+<li><p>Being kind to <em>future you</em>:</p>
+<ul>
+<li>Editing and reusing your own code (e.g., for a paper revision or a follow-up study)</li>
+<li>Easily being able to pick up a project after a break or finding and understanding things again after a longer time</li>
+</ul></li>
+</ul>
+</section>
+<section id="the-turing-way-definition" class="slide level2">
+<h2><em>The Turing Way</em> definition</h2>
+
+<img data-src="../material/img/reproducible-matrix.jpg" class="quarto-figure quarto-figure-center r-stretch"><div style="font-size: 50%;">
+<p><a href="https://the-turing-way.netlify.app/reproducible-research/overview/overview-definitions.html">https://the-turing-way.netlify.app/reproducible-research/overview/overview-definitions.html</a></p>
+</div>
+</section>
+<section id="computational-reproducibility" class="slide level2">
+<h2>Computational reproducibility</h2>
+<p>There also are distinctions between different types (or components) of reproducibility. One type/component that is especially relevant for our course is “computational reproducibility”:</p>
+<div class="fragment">
+<div style="font-size: 82%;">
+<blockquote>
+<p>Ability to <strong>recreate the same results as the original study</strong> (including tables, figures, and quantitative findings), using the <strong>same input data, computational methods, and conditions of analysis</strong>. The availability of code and data facilitates computational reproducibility, as does preparation of these materials (annotating data, delineating software versions used, sharing computational environments, etc). Ideally, computational reproducibility should be achievable by another second researcher (or the original researcher, at a future time), using only a set of files and written instructions.</p>
+</blockquote>
+</div>
+<div style="font-size: 30%;">
+<p><a href="https://forrt.org/glossary/reproducibility">https://forrt.org/glossary/reproducibility</a></p>
+</div>
+</div>
+</section>
+<section id="the-state-of-affairs" class="slide level2">
+<h2>The state of affairs</h2>
+
+<img data-src="../material/img/hong_open_science.png" style="width:60.0%" class="r-stretch"><div style="font-size: 50%;">
+<p>Chan, C., Schatto-Eckrodt, T., &amp; Gruber, J. B. (2024). What makes computational communication science (ir)reproducible? Computational Communication Research.</p>
+</div>
+<div style="font-size: 70%;">
+<p><strong>Take 3-5 minutes with your neighbor(s) to quickly recap the key findings of <span class="citation" data-cites="chan_what_2024">Chan, Schatto-Eckrodt, and Gruber (<a href="#/references" role="doc-biblioref" onclick="">2024</a>)</span>.</strong></p>
+</div>
+</section>
+<section id="required-reading-one-of-the-facebook-papers" class="slide level2">
+<h2>Required reading: one of the “Facebook papers”</h2>
+
+<img data-src="../material/img/facebook_nyhan.png" class="quarto-figure quarto-figure-center r-stretch"><div style="font-size: 50%;">
+<p>Nyhan, B., Settle, J., Thorson, E., Wojcieszak, M., Barberá, P., Chen, A. Y., Allcott, H., Brown, T., Crespo-Tenorio, A., Dimmery, D., Freelon, D., Gentzkow, M., González-Bailón, S., Guess, A. M., Kennedy, E., Kim, Y. M., Lazer, D., Malhotra, N., Moehler, D., … Tucker, J. A. (2023). Like-minded sources on Facebook are prevalent but not polarizing. <a href="https://doi.org/10.1038/s41586-023-06297-w"><em>Nature</em>, 620(7972), 137–144.</a></p>
+</div>
+</section>
+<section id="tools-workflows" class="slide level2">
+<h2>Tools &amp; workflows</h2>
+<p><strong>Tools</strong> are programming languages, scripts and other pieces of software that we use to make our research reproducible.</p>
+<p><strong>Workflows</strong> are the ways in which we combine these tools to achieve our goal.</p>
+<div class="fragment">
+<p>Choosing tools and establishing workflows are somewhat idiosyncratic processes that depend on…</p>
+<ul>
+<li><p>the requirements of your project (methods, data types, …)</p></li>
+<li><p>the availability of tools</p></li>
+<li><p>your skills and knowledge</p></li>
+<li><p>the preferences of collaborators</p></li>
+</ul>
+</div>
+</section>
+<section id="research-management-practices" class="slide level2">
+<h2>Research management practices</h2>
+<p>Being an open scientist means adopting a few straightforward research management practices, which lead to less error-prone, reproducible research workflows <span class="citation" data-cites="klein_practical_2018">(<a href="#/references" role="doc-biblioref" onclick="">Klein et al. 2018</a>: 11)</span></p>
+<ul>
+<li>Using free and open source software (FOSS)</li>
+<li><a href="https://www.tidyverse.org/blog/2017/12/workflow-vs-script">Project-oriented workflow</a></li>
+<li><a href="https://style.tidyverse.org">The <em>tidyverse</em> style guide</a></li>
+<li><a href="https://psych-transparency-guide.uni-koeln.de/folder-structure.html">Clear folder structures</a></li>
+<li><a href="https://style.tidyverse.org/syntax.html">Naming things</a></li>
+</ul>
+</section></section>
+<section>
+<section id="the-role-of-open-science-in-your-term-papers" class="title-slide slide level1 center" data-background-color="#58748F">
+<h1>The role of open science in your term papers</h1>
+
+</section>
+<section id="requirements-for-term-paper" class="slide level2">
+<h2>Requirements for term paper</h2>
+<ul>
+<li>Should be based on content/methods covered in the seminar: collection and analysis of DBD, use of CSS methods in <em>R</em></li>
+<li>(4,000-5,000 words)</li>
+<li>Submission deadline: 31 July 2026 (<strong>Prüfungsleistung/Examination</strong>)</li>
+<li>Fully reproducible code, including narrative comments where you explain what you do in each step
+<ul>
+<li>You can share all materials, including data with me via <a href="https://cryptshare.gesis.org">https://cryptshare.gesis.org</a></li>
+</ul></li>
+</ul>
+</section>
+<section id="format-of-term-paper" class="slide level2">
+<h2>Format of term paper</h2>
+<ul>
+<li>Motivation and research question</li>
+<li>Concise theoretical overview: for what conceptual and theoretical reasons do I choose these data and methods?</li>
+<li>Research design</li>
+<li>Data and variables</li>
+<li>Method: no detailed mathematical description needed, but why does this method fit my research question and my data?</li>
+<li>Results</li>
+<li>Interpretation and conclusions</li>
+<li>Analysis code as an R script: needs to be fully reproducible</li>
+</ul>
+</section>
+<section id="presentations" class="slide level2">
+<h2>Presentations</h2>
+<ul>
+<li>Short 5 minute elevator pitch of your ideas</li>
+<li>A structure with three slides could look like this
+<ol type="1">
+<li>Motivation, research question and theory</li>
+<li>Data source and data acquisition</li>
+<li>Current status / preliminary data collection / analysis</li>
+</ol></li>
+</ul>
+</section></section>
+<section>
+<section id="see-you-next-week-on-may-13" class="title-slide slide level1 center" data-background-color="#58748F">
+<h1>See you next week on May 13</h1>
+
+</section>
+<section id="references" class="slide level2 smaller scrollable">
+<h2>References</h2>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-chan_what_2024" class="csl-entry" role="listitem">
+Chan, Chung-hong, Tim Schatto-Eckrodt, and Johannes B. Gruber. 2024. <span>“What Makes Computational Communication Science (Ir)reproducible?”</span> <em>Computational Communication Research</em>.
+</div>
+<div id="ref-klein_practical_2018" class="csl-entry" role="listitem">
+Klein, Olivier, Tom E. Hardwicke, Frederik Aust, Johannes Breuer, Henrik Danielsson, Alicia Hofelich Mohr, Hans IJzerman, Gustav Nilsonne, Wolf Vanpaemel, and Michael C. Frank. 2018. <span>“A <span>Practical</span> <span>Guide</span> for <span>Transparency</span> in <span>Psychological</span> <span>Science</span>.”</span> Edited by Michéle Nuijten and Simine Vazire. <em>Collabra: Psychology</em> 4 (1). <a href="https://doi.org/10.1525/collabra.158">https://doi.org/10.1525/collabra.158</a>.
+</div>
+</div>
+</section></section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<p><img src="_extensions/gesiscss/fakegesis/gesis-unima_new.png" class="slide-logo"></p>
+<div class="footer footer-default">
+<p><a href="https://sebstier.github.io/ma_css26/">Computational Social Science and Digital Behavioral Data, University of Mannheim</a></p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../libs/revealjs/plugin/search/search.js"></script>
+  <script src="../libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const onCopySuccess = function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
+      });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp("https:\/\/sebstier\.github\.io\/ma_css26\/");
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+              // target, if specified
+              link.setAttribute("target", "_blank");
+              if (link.getAttribute("rel") === null) {
+                link.setAttribute("rel", "noopener");
+              }
+              // default icon
+              link.classList.add("external");
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+        const config = {
+          allowHTML: true,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start',
+        };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
+
+</body></html>
