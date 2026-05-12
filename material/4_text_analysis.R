@@ -166,13 +166,13 @@ library(rollama)
 rollama::ping_ollama()
 #?pull_model
 #pull_model() # Defaults to "llama3.1". List of models: https://ollama.com/library
-test <- show_model()
+show_model()
 
 # Example chatbot interaction
 query("Why is the sky blue? Answer with one sentence.")
 query("What is the capital of Germany?")
 
-# Classify multiple text documents. We create a subset of interesting Trump tweets
+# Classify multiple t#ext documents. We create a subset of interesting Trump tweets
 df_trump_to_classify = df_trump %>% 
   slice(80:100) %>% 
   select(text) # select only the text variable to keep the data frame more readable
@@ -205,3 +205,84 @@ df_trump_to_classify$sentiment_refined <- query(queries, screen = FALSE, output 
 View(df_trump_to_classify)
 
 
+# LDA Topic Models ----
+library(seededlda)
+
+# Restrict the number of features further, otherwise running the LDA will take long
+dfm_trimmed <- dfm_nostop %>% 
+  dfm_trim(min_termfreq = 50) # only features that appear at least 50 times
+dfm_trimmed
+
+# set a seed in order to keep the output consistent
+set.seed(111)
+
+# run the LDA Topic Model
+tmod_lda <- textmodel_lda(dfm_trimmed, k = 10)
+terms(tmod_lda, 10)
+df_terms <- terms(tmod_lda, 15)
+View(df_terms)
+
+# Assign topic as a new variable
+dfm_trimmed$topic <- topics(tmod_lda)
+
+# Cross-table the topic frequency
+table(dfm_trimmed$topic)
+
+# Visualize topic model on the web
+library(LDAvis)
+phi <- tmod_lda$phi  # topic-term distribution
+theta <- tmod_lda$theta  # document-topic distribution
+vocab <- featnames(dfm_trimmed) # vocabulary
+doc_length <- rowSums(dfm_trimmed)  # length of each document
+term_frequency <- colSums(dfm_trimmed)  # term frequency
+
+# Create the JSON object for visualization
+json <- LDAvis::createJSON(phi = phi, theta = theta, vocab = vocab, 
+                           doc.length = doc_length, term.frequency = term_frequency)
+
+# Visualize
+LDAvis::serVis(json)
+
+
+# Wordfish ----
+# read in party manifestos of German parties in 2013 and 2017
+corp_ger <- read_rds("https://www.dropbox.com/s/uysdoep4unfz3zp/data_corpus_germanifestos.rds?dl=1")
+summary(corp_ger)
+docvars(corp_ger)
+
+# Remove German stopwords, use only features that occur at least 50 times and create a dfm
+dfm_ger <- corp_ger %>% 
+  tokens(remove_punct = TRUE, remove_numbers = TRUE, remove_url = TRUE) %>% 
+  tokens_select(pattern = stopwords("de"), selection = "remove") %>%
+  dfm() %>%
+  dfm_trim(min_termfreq = 30)
+
+# Run a wordfish model
+model_wf <- textmodel_wordfish(dfm_ger)
+textplot_scale1d(model_wf)
+
+# Validation ----
+library(caret)
+
+# We take the two sentiment variables predicted by LLMs from above but harmonize the spelling
+df_trump_to_classify <- df_trump_to_classify %>% 
+  mutate(sentiment = tolower(sentiment),
+         sentiment_refined = tolower(sentiment_refined))
+
+# Binary cross-tab of the two dictionaries
+tab_class <- table(sentiment = df_trump_to_classify$sentiment, 
+                   sentiment_refined = df_trump_to_classify$sentiment_refined)
+tab_class
+
+# Confusion matrix and F1 scores
+confusionMatrix(tab_class, mode = "everything")
+
+# Plot
+tab_class %>% 
+  as.data.frame() %>% 
+  ggplot(aes(x = sentiment, y = sentiment_refined, fill = Freq)) +
+  geom_tile(color = "white") +
+  geom_text(aes(label = Freq), size = 6) +
+  scale_fill_gradient(low = "lightblue", high = "darkblue") +
+  theme_minimal() +
+  labs(title = "Confusion Matrix")

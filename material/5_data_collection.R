@@ -136,3 +136,26 @@ df_yt <- get_comment_threads(
   filter = list(video_id = "24UV7imfIRk"),
   max_results = 20
 )
+
+
+# Reddit ----
+
+# Documentation
+#https://github.com/ivan-rivera/RedditExtractor
+
+# Download the latest version from github
+#devtools::install_github('ivan-rivera/RedditExtractor') 
+library(RedditExtractoR)
+soccer_urls <- find_thread_urls(subreddit = "soccer", sort_by = "top")
+threads_contents <- get_thread_content(soccer_urls$url[1:2]) 
+View(threads_contents)
+
+
+# Mastodon ----
+
+# Documentation
+# https://github.com/gesistsa/rtoot/
+
+# Download the latest version from github
+#devtools::install_github('gesistsa/rtoot')
+library(rtoot)
