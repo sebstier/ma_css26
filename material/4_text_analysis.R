@@ -2,6 +2,8 @@
 #' title: "Introduction to automated text analysis"
 #' author: "Sebastian Stier"
 #' institute: University of Mannheim & GESIS
+
+
 library(tidyverse)
 # For more advanced text analysis, we use the package quanteda
 library(quanteda)
@@ -214,7 +216,7 @@ dfm_trimmed <- dfm_nostop %>%
 dfm_trimmed
 
 # set a seed in order to keep the output consistent
-set.seed(111)
+set.seed(9991)
 
 # run the LDA Topic Model
 tmod_lda <- textmodel_lda(dfm_trimmed, k = 10)
@@ -222,11 +224,15 @@ terms(tmod_lda, 10)
 df_terms <- terms(tmod_lda, 15)
 View(df_terms)
 
+# Use more functions to explore the results
+#seededlda::
+
 # Assign topic as a new variable
 dfm_trimmed$topic <- topics(tmod_lda)
 
 # Cross-table the topic frequency
 table(dfm_trimmed$topic)
+docvars(dfm_trimmed)
 
 # Visualize topic model on the web
 library(LDAvis)
@@ -245,6 +251,12 @@ LDAvis::serVis(json)
 
 
 # Wordfish ----
+
+# Wordfish was created in 2008:  https://doi.org/10.1111/j.1540-5907.2008.00338.x
+
+library(quanteda.textmodels)
+library(quanteda.textplots)
+
 # read in party manifestos of German parties in 2013 and 2017
 corp_ger <- read_rds("https://www.dropbox.com/s/uysdoep4unfz3zp/data_corpus_germanifestos.rds?dl=1")
 summary(corp_ger)
@@ -260,6 +272,7 @@ dfm_ger <- corp_ger %>%
 # Run a wordfish model
 model_wf <- textmodel_wordfish(dfm_ger)
 textplot_scale1d(model_wf)
+
 
 # Validation ----
 library(caret)

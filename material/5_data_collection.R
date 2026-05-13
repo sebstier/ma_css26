@@ -147,6 +147,7 @@ df_yt <- get_comment_threads(
 #devtools::install_github('ivan-rivera/RedditExtractor') 
 library(RedditExtractoR)
 soccer_urls <- find_thread_urls(subreddit = "soccer", sort_by = "top")
+soccer_urls$text_real <- rownames(soccer_urls)
 threads_contents <- get_thread_content(soccer_urls$url[1:2]) 
 View(threads_contents)
 

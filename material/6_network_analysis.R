@@ -1,9 +1,7 @@
-#' class: "Computational Social Science and Digital Behavioral Data, University of Mannheim"
-#' title: "Network analysis"
+#' course: "Computational Social Science and Digital Behavioral Data, University of Mannheim"
+#' title: "Introduction to automated text analysis"
 #' author: "Sebastian Stier"
-#' lesson: 9
 #' institute: University of Mannheim & GESIS
-#' date: "2024-11-13"
 
 
 # How to run a script from R
