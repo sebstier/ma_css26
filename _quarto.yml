@@ -16,7 +16,7 @@ website:
         text: Slides
     right:
       - text: ILIAS
-        href: "https://ilias.uni-mannheim.de/ilias.php?baseClass=ilrepositorygui&ref_id=1527661"
+        href: "https://ilias.uni-mannheim.de/ilias.php?baseClass=ilrepositorygui&cmdNode=yx:mz&cmdClass=ilObjCourseGUI&cmd=render&ref_id=1662142"
   page-footer:
     left: "Sebastian Stier 2026"
     right: "Powered by [Quarto](https://quarto.org)"

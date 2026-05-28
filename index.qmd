@@ -36,7 +36,7 @@ The course will be application oriented. Students will familiarize themselves wi
 library(openxlsx)
 library(tidyverse)
 library(gt)
-read.xlsx("material/data/schedule_v2.xlsx") %>%
+read.xlsx("material/data/schedule.xlsx") %>%
     rename(`Required reading` = "Required.reading") %>%
     gt() %>%
     tab_header(md("**Seminar dates and topics**")) %>%
